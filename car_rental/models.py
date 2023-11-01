@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 class Car(models.Model): 
@@ -9,6 +10,7 @@ class Car(models.Model):
     seats = models.IntegerField()
     color = models.CharField(max_length=20)
     price_per_day = models.DecimalField(max_digits=10, decimal_places=2)
+    car_image = CloudinaryField('image')
     available = models.BooleanField(default=True)
     
     def __str__(self):
