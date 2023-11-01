@@ -30,13 +30,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG') == 'True'
-print(DEBUG)
 
-if DEBUG:
-    ALLOWED_HOSTS = ['127.0.0.1']
-else:
-    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
-    print(ALLOWED_HOSTS[0])
+# if DEBUG:
+#     ALLOWED_HOSTS = ['127.0.0.1']
+# else:
+#     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+ALLOWED_HOSTS = ['127.0.0.1', 'gg-car-rental-50d3bfa38b5d.herokuapp.com']
 
 # Application definition
 
