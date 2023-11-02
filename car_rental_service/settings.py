@@ -34,7 +34,7 @@ DEBUG = os.environ.get('DEBUG') == 'True'
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1']
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 # ALLOWED_HOSTS = ['127.0.0.1', 'gg-car-rental-50d3bfa38b5d.herokuapp.com']
 
 # Application definition
