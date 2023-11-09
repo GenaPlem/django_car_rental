@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Crimson Text';
+    src: url('../fonts/Crimson_Text/CrimsonText-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #26222A;
+    font-family: "Crimson Text", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    max-width: 1300px;
+    padding: 0 70px;
+    margin: 0 auto;
+}
+
+.orange {
+    color: #FF8A00;
+}
+
+.active {
+    /*text-decoration: underline 1px solid #FF8A00;*/
+    color: #FF8A00 !important;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.nav-link:hover {
+    text-decoration: underline 2px solid #FF8A00;
+}
+
+.btn-orange {
+    width: 120px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid #FF8A00;
+    border-radius: 15px;
+    filter: drop-shadow(4px 8px 4px rgba(0, 0, 0, 0.25));
+}
+
+.btn-orange:hover, .btn-orange a:hover {
+    background-color: #FF8A00;
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 35px;
+    }
+}
+
+/*@media (max-width: 575px) {*/
+/*    .container {*/
+/*        padding: 0 35px;*/
+/*    }*/
+/*}*/
