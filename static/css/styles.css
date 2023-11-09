@@ -14,7 +14,7 @@ body {
 
 .container {
     max-width: 1300px;
-    padding: 0 70px;
+    padding: 0 4.5rem;
     margin: 0 auto;
 }
 
@@ -25,6 +25,15 @@ body {
 .active {
     /*text-decoration: underline 1px solid #FF8A00;*/
     color: #FF8A00 !important;
+}
+/* Header section */
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #26222A;
+    z-index: 999;
 }
 
 .navbar-toggler {
@@ -44,23 +53,84 @@ body {
 }
 
 .btn-orange {
-    width: 120px;
-    height: 40px;
     background-color: transparent;
     border: 2px solid #FF8A00;
-    border-radius: 15px;
+    border-radius: 1rem;
     filter: drop-shadow(4px 8px 4px rgba(0, 0, 0, 0.25));
 }
 
-.btn-orange:hover, .btn-orange a:hover {
+#sign_in:hover, .btn-orange:hover {
     background-color: #FF8A00;
 }
 
-@media (max-width: 767px) {
+#sign_in {
+    width: 7.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+}
+/* Hero section */
+.hero {
+    /* Use blend-mode multiply to set background image and background color */
+    background-blend-mode: multiply;
+    background-image: url("../images/hero_section_img.webp");
+    background-color: rgba(72, 69, 69, 0.30);
+    background-position: center;
+    min-height: 100vh;
+}
+
+.hero-info {
+    display: inline-block;
+    padding-top: 18rem;
+    padding-left: 13rem;
+}
+
+.hero-title {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.hero-description {
+    margin-top: -1.5rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#rent_now {
+    font-weight: bold;
+    margin: 5rem 0 0 17rem;
+    width: 260px;
+    height: 60px;
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
     .container {
-        padding: 0 35px;
+        padding: 0 2rem;
+    }
+
+    .hero-info {
+        display: block;
+        padding: 8rem 0 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        margin-top: -1.1rem;
+        font-size: 1.3rem;
+    }
+
+    #rent_now {
+        width: 11rem;
+        height: 2.5rem;
+        font-size: 1rem;
+        margin: 15rem auto;
     }
 }
+
+
 
 /*@media (max-width: 575px) {*/
 /*    .container {*/
