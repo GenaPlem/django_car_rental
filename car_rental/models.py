@@ -9,11 +9,18 @@ class Car(models.Model):
         ('automatic', 'Automatic')
     ]
 
+    FUEL_CHOICES = [
+        ('petrol', 'Petrol'),
+        ('diesel', 'Diesel'),
+        ('electic', 'Electric'),
+    ]
+
     make = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
     year = models.IntegerField()
     seats = models.IntegerField()
     transmission_type = models.CharField(max_length=10, choices=TRANSMISSION_CHOICES, default='manual')
+    fuel_type = models.CharField(max_length=10, choices=FUEL_CHOICES, default='petrol')
     price_per_day = models.DecimalField(max_digits=10, decimal_places=2)
     car_image = CloudinaryField('image')
     available = models.BooleanField(default=True)
@@ -23,10 +30,21 @@ class Car(models.Model):
 
 
 class Booking(models.Model):
+    INSURANCE_CHOICES = [
+        ('young', 'Young'),
+        ('standart', 'Standart'),
+        ('senior', 'Senior'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
+    name = models.CharField(max_length=20, blank=False, null=False)
+    surname = models.CharField(max_length=20, blank=False, null=False)
+    child_seat = models.BooleanField(default=False)
+    insurance_type = models.CharField(max_length=10, choices=INSURANCE_CHOICES, default='standart')
+    rules_agreement = models.BooleanField(default=False, blank=False)
 
     def __str__(self):
         return f"Booking for {self.car} by {self.user}"
