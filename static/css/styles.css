@@ -5,6 +5,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Crimson Text';
+    src: url('../fonts/Crimson_Text/CrimsonText-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Crimson Text';
+    src: url('../fonts/Crimson_Text/CrimsonText-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
 body {
     background-color: #26222A;
     font-family: "Crimson Text", sans-serif;
@@ -75,32 +89,66 @@ body {
     background-image: url("../images/hero_section_img.webp");
     background-color: rgba(72, 69, 69, 0.30);
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 100vh;
 }
 
 .hero-info {
     display: inline-block;
     padding-top: 18rem;
-    padding-left: 13rem;
+    padding-left: 5rem;
 }
 
 .hero-title {
+    font-weight: 600;
     text-align: center;
     font-size: 4rem;
 }
 
 .hero-description {
+    font-weight: 600;
     margin-top: -1.5rem;
     text-align: center;
     font-size: 2rem;
 }
 
 #rent_now {
-    font-weight: bold;
-    margin: 5rem 0 0 17rem;
+    margin: 5rem 0 0 9.5rem;
     width: 260px;
     height: 60px;
     font-size: 2rem;
+}
+/* About section */
+.about {
+
+}
+
+.about-title {
+    font-size: 2.8rem;
+    letter-spacing: -0.05625rem;
+}
+
+.about-card {
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    max-width: 100%;
+    flex-direction: column;
+}
+
+.about-card-img {
+    object-fit: cover;
+    aspect-ratio: 1 / 0.9;
+}
+
+.about-card-info {
+    background-color: #E8F7EE;
+}
+
+.about-card-title {
+    font-size: 2.2rem;
+    letter-spacing: -0.04375rem;
 }
 
 @media (max-width: 768px) {
@@ -114,7 +162,7 @@ body {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
 
     .hero-description {
@@ -126,7 +174,10 @@ body {
         width: 11rem;
         height: 2.5rem;
         font-size: 1rem;
-        margin: 15rem auto;
+        margin: 0 auto;
+        position: absolute;
+        bottom: 15vh;
+        left: calc(50% - 88px);
     }
 }
 
