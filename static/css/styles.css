@@ -26,9 +26,15 @@ body {
     font-style: normal;
 }
 
+.container-big {
+    max-width: calc(1300px + 4rem);
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
 .container {
-    max-width: 1300px;
-    padding: 0 4.5rem;
+    max-width: calc(1160px + 4rem);
+    padding: 0 2rem;
     margin: 0 auto;
 }
 
@@ -39,6 +45,10 @@ body {
 .active {
     /*text-decoration: underline 1px solid #FF8A00;*/
     color: #FF8A00 !important;
+}
+
+.d-contents {
+    display: contents;
 }
 /* Header section */
 .header {
@@ -95,36 +105,38 @@ body {
 }
 
 .hero-info {
-    display: inline-block;
-    padding-top: 18rem;
-    padding-left: 5rem;
+    display: block;
+    padding: 8rem 0 0;
 }
 
 .hero-title {
     font-weight: 600;
     text-align: center;
-    font-size: 4rem;
+    font-size: 2.4rem;
 }
 
 .hero-description {
     font-weight: 600;
-    margin-top: -1.5rem;
     text-align: center;
-    font-size: 2rem;
+    margin-top: -1.1rem;
+    font-size: 1.3rem;
 }
 
 #rent_now {
-    margin: 5rem 0 0 9.5rem;
-    width: 260px;
-    height: 60px;
-    font-size: 2rem;
+    width: 11rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 15vh;
+    left: calc(50% - 88px);
 }
 /* About section */
 .about {
 
 }
 
-.about-title {
+.title {
     font-size: 2.8rem;
     letter-spacing: -0.05625rem;
 }
@@ -132,9 +144,8 @@ body {
 .about-card {
     overflow: hidden;
     border-radius: 15px;
-    display: flex;
     max-width: 100%;
-    flex-direction: column;
+    filter: drop-shadow(0px 0px 4px #E8F7EE);
 }
 
 .about-card-img {
@@ -143,48 +154,83 @@ body {
 }
 
 .about-card-info {
-    background-color: #E8F7EE;
+    background-color: #26222A;
 }
 
 .about-card-title {
     font-size: 2.2rem;
     letter-spacing: -0.04375rem;
 }
+/* Rules section */
+.rules {
 
-@media (max-width: 768px) {
+}
+
+.rules-icon {
+    max-height: 75px;
+}
+
+.rules-title {
+    font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+    .container-big {
+        max-width: calc(1300px + 9rem);
+        padding: 0 4.5rem;
+    }
+
     .container {
-        padding: 0 2rem;
+        max-width: calc(1160px + 9rem);
+        padding: 0 4.5rem;
     }
 
     .hero-info {
-        display: block;
-        padding: 8rem 0 0;
+        display: inline-block;
+        padding-top: 18rem;
+        padding-left: 5rem;
     }
 
     .hero-title {
-        font-size: 2.4rem;
+        font-size: 4rem;
     }
 
     .hero-description {
-        margin-top: -1.1rem;
-        font-size: 1.3rem;
+        margin-top: -1.5rem;
+        font-size: 2rem;
+    }
+
+    .about-card-img {
+        max-height: 464px;
     }
 
     #rent_now {
-        width: 11rem;
-        height: 2.5rem;
-        font-size: 1rem;
-        margin: 0 auto;
-        position: absolute;
-        bottom: 15vh;
-        left: calc(50% - 88px);
+        position: unset;
+        margin: 5rem 0 0 9.5rem;
+        width: 260px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .rules-icon {
+        max-height: 90px;
     }
 }
 
+@media (min-width: 1024px) {
+    .title {
+        font-size: 4rem;
+    }
 
+    .about-card-title {
+        font-size: 3rem;
+    }
 
-/*@media (max-width: 575px) {*/
-/*    .container {*/
-/*        padding: 0 35px;*/
-/*    }*/
-/*}*/
+    .about-card-subtitle {
+        font-size: 2.2rem;
+    }
+
+    .about-card-text {
+        font-size: 1.4rem;
+    }
+}
