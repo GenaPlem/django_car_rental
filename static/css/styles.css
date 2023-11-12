@@ -81,6 +81,10 @@ body {
     text-decoration: underline 2px solid #FF8A00;
 }
 
+li.nav-item:last-of-type {
+    margin: 0.4rem 0;
+}
+
 .btn-orange {
     background-color: transparent;
     border: 2px solid #FF8A00;
