@@ -41,7 +41,8 @@
             </div>
         </article>
         <article class="about-card d-flex flex-column flex-sm-row my-4 my-md-5">
-            <img class="about-card-img col-sm-5 order-sm-last" src="../static/images/customer_service.webp" alt="Our service">
+            <img class="about-card-img col-sm-5 order-sm-last" src="../static/images/customer_service.webp"
+                 alt="Our service">
             <div class="about-card-info p-3 col-sm-7 text-white d-lg-flex flex-lg-column gap-lg-1 p-xl-4">
                 <h3 class="about-card-title fw-bold text-center">Customer Service</h3>
                 <h4 class="about-card-subtitle">Your Satisfaction, Our Priority</h4>
@@ -73,6 +74,57 @@
             <div class="d-flex flex-column align-items-center">
                 <img class="rules-icon mb-3" src="../static/icons/road_accident.svg" alt="Road accident">
                 <h3 class="text-white rules-title">Emergency Procedures</h3>
+            </div>
+        </div>
+        <div class="text-center my-3 my-md-5">
+            <button class="btn-orange text-white" id="learn_more" data-bs-toggle="modal"
+                    data-bs-target="#RentalRulesModal">Learn More
+            </button>
+        </div>
+        <div class="modal fade text-white" tabindex="-1" id="RentalRulesModal">
+            <div class="modal-dialog modal-dialog-scrollable ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Rental Rules</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p><b>Driving License:</b> A valid driving license with a minimum of 2 years of driving
+                            experience is required.</p>
+                        <p><b>Age-Based Insurance:</b></p>
+                        <ul>
+                            <li>Ages 20-25: Young Driver Insurance</li>
+                            <li>Ages 25-50: Standard Driver Insurance</li>
+                            <li>Ages 50+: Senior Driver Insurance</li>
+                        </ul>
+                        <p><b>Mileage Limit:</b> Each rental comes with a standard daily mileage limit. Excess mileage
+                            will incur additional charges.</p>
+                        <p><b>Fuel Policy:</b> Vehicles must be returned with the same amount of fuel as at the start of
+                            the rental to avoid refueling charges.</p>
+                        <p><b>Additional Drivers:</b> Must be registered at the time of rental and meet the same
+                            requirements as the primary driver.</p>
+                        <p><b>Damage Policy:</b> Any damage to the vehicle not covered by insurance will be the
+                            responsibility of the renter.</p>
+                        <p><b>Late Return:</b> Late returns may be subject to extra day charges at the daily rate.</p>
+                        <p><b>Booking Cancellation:</b> Free cancellation up to 48 hours before the pick-up time. Late
+                            cancellations may incur a fee.</p>
+                        <p><b>No Smoking:</b> All vehicles are non-smoking. A cleaning fee will be charged if this rule
+                            is violated.</p>
+                        <p><b>Prohibited Use:</b> Vehicles cannot be used for off-roading, racing, or any illegal
+                            activities.</p>
+                        <p><b>Geographical Restrictions:</b> Vehicles must not be taken out of the predefined rental
+                            area without prior approval.</p>
+                        <p><b>Payment:</b> Rental charges must be paid in full at the time of vehicle pick-up.</p>
+                        <p><b>Vehicle Condition:</b> The renter agrees to maintain the vehicle's condition, reporting
+                            any mechanical issues immediately.</p>
+                        <p><b>Emergency Procedures:</b> In case of an accident or emergency, renters must follow the
+                            outlined procedures provided at the time of rental.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-orange text-white" id="close_modal" data-bs-dismiss="modal">
+                            Okay
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

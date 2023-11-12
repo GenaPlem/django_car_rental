@@ -14,25 +14,25 @@
 </head>
 <body>
 <div class="shadow header">
-    <header class="container">
+    <header class="container-big">
         <nav class="navbar navbar-expand-sm">
-            <a href="#" class="navbar-brand fs-1 text-white"><span class="orange">S</span>wift<span
+            <a href="#" class="navbar-brand logo text-white"><span class="orange">S</span>wift<span
                 class="orange">G</span>o</a>
-            <button class="navbar-toggler orange" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#menu_btn">
-                <img src="{% static 'icons/menu.svg' %}" alt="menu button">
+                <img src="icons/menu.svg" alt="menu button">
             </button>
             <div class="collapse navbar-collapse ul-bg" id="menu_btn">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="{% url 'home' %}" class="nav-link text-white active ms-4 fs-4" aria-current="page">Home</a>
+                        <a href="#" class="nav-link text-white active ms-sm-4 fs-4" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white ms-4 fs-4">Cars</a>
+                        <a href="#" class="nav-link text-white ms-sm-4 fs-4">Cars</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="ms-4">
-                            <button class="fs-4 text-white btn-orange">Sign Up</button>
+                        <a href="#" class="ms-sm-4">
+                            <button class="fs-4 text-white btn-orange" id="sign_in">Sign Up</button>
                         </a>
                     </li>
                 </ul>
