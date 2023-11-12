@@ -50,6 +50,7 @@ body {
 .d-contents {
     display: contents;
 }
+
 /* Header section */
 .header {
     position: fixed;
@@ -101,6 +102,7 @@ body {
     width: 10rem;
     height: 2.5rem;
 }
+
 /* Hero section */
 .hero {
     /* Use blend-mode multiply to set background image and background color */
@@ -140,6 +142,7 @@ body {
     bottom: 15vh;
     left: calc(50% - 88px);
 }
+
 /* About section */
 /*.about {*/
 
@@ -170,6 +173,7 @@ body {
     font-size: 2.2rem;
     letter-spacing: -0.04375rem;
 }
+
 /* Rules section */
 /*.rules {*/
 
@@ -190,6 +194,24 @@ body {
 #close_modal {
     width: 5rem;
     height: 2.2rem;
+}
+
+/* Footer section */
+footer {
+    border-top: 1px solid #fff;
+}
+
+.footer-card {
+    min-width: 7.2rem;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-link:hover {
+    color: #FF8A00;
 }
 
 @media (min-width: 768px) {
