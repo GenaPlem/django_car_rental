@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <section class="hero">
@@ -15,11 +16,11 @@
     <section class="about container">
         <h2 class="text-white text-center pt-5 title">About Us</h2>
         <article class="about-card d-flex flex-column flex-sm-row my-4 my-md-5">
-            <img class="about-card-img col-sm-5 order-sm-last" src="../static/images/cars.webp" alt="Our cars">
+            <img class="about-card-img col-sm-5 order-sm-last" src="{% static 'images/cars.webp' %}" alt="Our cars">
             <div class="about-card-info p-3 col-sm-7 text-white d-lg-flex flex-lg-column gap-lg-1 p-xl-4">
                 <h3 class="about-card-title fw-bold text-center">Cars</h3>
                 <h4 class="about-card-subtitle">Quality and Reliability Assured</h4>
-                <p class="m-0 about-card-text">At GG Car Rental, we take pride in our fleet, comprising only the finest
+                <p class="m-0 about-card-text">At SwiftGo, we take pride in our fleet, comprising only the finest
                     vehicles in the market.
                     Each car undergoes rigorous pre-rental inspections and regular maintenance checks to ensure your
                     safety and comfort. Our commitment is to provide you with a vehicle in pristine condition, making
@@ -28,12 +29,12 @@
             </div>
         </article>
         <article class="about-card d-flex flex-column flex-sm-row my-4 my-md-5">
-            <img class="about-card-img col-sm-5" src="../static/images/pricing.webp" alt="Our price">
+            <img class="about-card-img col-sm-5" src="{% static 'images/pricing.webp' %}" alt="Our price">
             <div class="about-card-info p-3 col-sm-7 text-white d-lg-flex flex-lg-column gap-lg-1 p-xl-4">
                 <h3 class="about-card-title fw-bold text-center">Pricing</h3>
                 <h4 class="about-card-subtitle">Driving Without Compromise</h4>
-                <p class="m-0 about-card-text">At GG Car Rental, we believe that premium car rental services should not
-                    cost a fortune.
+                <p class="m-0 about-card-text">At SwiftGo, we believe that premium car rental services should not cost a
+                    fortune.
                     Our pricing strategy is designed to offer you the most competitive rates with no hidden fees.
                     We provide transparent rental terms and flexible options, allowing you to enjoy your drive
                     without financial worries.
@@ -41,12 +42,12 @@
             </div>
         </article>
         <article class="about-card d-flex flex-column flex-sm-row my-4 my-md-5">
-            <img class="about-card-img col-sm-5 order-sm-last" src="../static/images/customer_service.webp"
+            <img class="about-card-img col-sm-5 order-sm-last" src="{% static 'images/customer_service.webp' %}"
                  alt="Our service">
             <div class="about-card-info p-3 col-sm-7 text-white d-lg-flex flex-lg-column gap-lg-1 p-xl-4">
                 <h3 class="about-card-title fw-bold text-center">Customer Service</h3>
                 <h4 class="about-card-subtitle">Your Satisfaction, Our Priority</h4>
-                <p class="m-0 about-card-text">At GG Car Rental, we take pride in our fleet, comprising only the finest
+                <p class="m-0 about-card-text">At SwiftGo, we take pride in our fleet, comprising only the finest
                     vehicles in the market.
                     Each car undergoes rigorous pre-rental inspections and regular maintenance checks to ensure your
                     safety and comfort. Our commitment is to provide you with a vehicle in pristine condition, making
@@ -55,24 +56,24 @@
             </div>
         </article>
     </section>
-    <section class="rules container">
+    <section class="rules container mb-5">
         <h2 class="title text-white pt-5 text-center">Rental Rules</h2>
         <div
             class="d-flex flex-column flex-md-row align-items-center align-items-md-baseline justify-content-md-evenly flex-md-wrap gap-4 mt-4 mt-md-5">
             <div class="d-flex flex-column align-items-center">
-                <img class="rules-icon mb-3" src="../static/icons/drivers_license.svg" alt="Drivers license">
+                <img class="rules-icon mb-3" src="{% static 'icons/drivers_license.svg' %}" alt="Drivers license">
                 <h3 class="text-white rules-title">Driving License</h3>
             </div>
             <div class="d-flex flex-column align-items-center">
-                <img class="rules-icon mb-3" src="../static/icons/human.svg" alt="Human">
+                <img class="rules-icon mb-3" src="{% static 'icons/human.svg' %}" alt="Human">
                 <h3 class="text-white rules-title">Age-Based Insurance</h3>
             </div>
             <div class="d-flex flex-column align-items-center">
-                <img class="rules-icon mb-3" src="../static/icons/fuel.svg" alt="Drivers license">
+                <img class="rules-icon mb-3" src="{% static 'icons/fuel.svg' %}" alt="Drivers license">
                 <h3 class="text-white rules-title">Fuel Policy</h3>
             </div>
             <div class="d-flex flex-column align-items-center">
-                <img class="rules-icon mb-3" src="../static/icons/road_accident.svg" alt="Road accident">
+                <img class="rules-icon mb-3" src="{% static 'icons/road_accident.svg' %}" alt="Road accident">
                 <h3 class="text-white rules-title">Emergency Procedures</h3>
             </div>
         </div>
@@ -84,7 +85,7 @@
         <div class="modal fade text-white" tabindex="-1" id="RentalRulesModal">
             <div class="modal-dialog modal-dialog-scrollable ">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header shadow">
                         <h5 class="modal-title">Rental Rules</h5>
                     </div>
                     <div class="modal-body">
