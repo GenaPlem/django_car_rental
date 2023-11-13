@@ -2,37 +2,48 @@
 {% load static %}
 
 {% block content %}
-    <section class="pt-5 container text-white min-vh-100 mt-5">
+    <section class="pt-5 container text-white mt-5">
         <h1 class="title text-center mt-2 mt-lg-4">Our Cars</h1>
         <div class="cars row my-4">
-        {% for car in cars %}
-            <div class="car-card-box d-flex flex-column col-6 col-sm-4 mb-4">
-                <div class="car-img d-block overflow-hidden mb-1">
-                    <img src="{{ car.car_image.url }}" alt="{{ car.make }} {{ car.model }}" class="d-block w-100 h-auto">
+            {% for car in cars %}
+                <div class="car-card-box d-flex flex-column col-6 col-sm-4 mb-4">
+                    <div class="car-img d-block overflow-hidden mb-1">
+                        <img src="{{ car.car_image.url }}" alt="{{ car.make }} {{ car.model }}"
+                             class="d-block w-100 h-auto">
+                    </div>
+                    <h4 class="car-title">{{ car.make }} {{ car.model }}</h4>
+                    <a href="#" class="align-self-end">
+                        <button type="button" class="btn-orange text-white price">{{ car.price_per_day }}€ / Day
+                        </button>
+                    </a>
                 </div>
-                <h4 class="car-title">{{ car.make }} {{ car.model }}</h4>
-                <a href="#" class="align-self-end">
-                    <button type="button" class="btn-orange text-white price">{{ car.price_per_day }}€ / Day</button>
-                </a>
-            </div>
-        {% endfor %}
+            {% endfor %}
         </div>
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for page_num in page_obj.paginator.page_range %}
+                        <li class="page-item">
+                            <a class="page-link {% if page_num == page_obj.number %}active{% endif %}"
+                               href="?page={{ page_num }}">{{ page_num }}</a>
+                        </li>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
     </section>
 {% endblock %}

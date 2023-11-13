@@ -18,3 +18,4 @@ class CarsListView(ListView):
     model = Car
     template_name = 'cars.html'
     context_object_name = 'cars'
+    paginate_by = 6
