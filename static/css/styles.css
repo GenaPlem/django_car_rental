@@ -50,7 +50,6 @@ body {
 .d-contents {
     display: contents;
 }
-
 /* Header section */
 .header {
     position: fixed;
@@ -107,6 +106,9 @@ li.nav-item:last-of-type {
     height: 2.5rem;
 }
 
+.price {
+    font-size: 0.8rem;
+}
 /* Hero section */
 .hero {
     /* Use blend-mode multiply to set background image and background color */
@@ -146,7 +148,6 @@ li.nav-item:last-of-type {
     bottom: 15vh;
     left: calc(50% - 88px);
 }
-
 /* About section */
 /*.about {*/
 
@@ -177,7 +178,6 @@ li.nav-item:last-of-type {
     font-size: 2.2rem;
     letter-spacing: -0.04375rem;
 }
-
 /* Rules section */
 /*.rules {*/
 
@@ -199,7 +199,56 @@ li.nav-item:last-of-type {
     width: 5rem;
     height: 2.2rem;
 }
+/* Cars Page */
+.car-img {
+    position: relative;
+    border-radius: 0.625rem;
+}
 
+.car-title {
+    font-size: 1rem;
+}
+
+.car-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 4px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 0.625rem;
+}
+
+.pagination {
+    gap: 0.5rem;
+}
+
+.page-link {
+    font-size: 0.9rem;
+    display: unset;
+    border: unset;
+    color: #26222A;
+    padding: 5px 10px !important;
+    border-radius: 5px;
+}
+
+.page-link:hover {
+    background-color: #FF8A00;
+    color: #26222A;
+}
+
+.page-link:focus {
+    background-color: #ff8a00;
+    color: #26222A;
+    border: unset;
+    box-shadow: 0 0 0 0.25rem #ff8a00;
+}
+
+.page-link.active {
+    background-color: #ff8a00;
+    color: #26222A !important;
+}
 /* Footer section */
 footer {
     border-top: 1px solid #fff;
@@ -270,6 +319,18 @@ footer {
     .rules-icon {
         max-height: 90px;
     }
+
+    .car-title {
+        font-size: 1.3rem;
+    }
+
+    .price {
+        font-size: 1rem;
+    }
+
+    .page-link {
+        font-size: 1rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -291,5 +352,13 @@ footer {
 
     .about-card-text {
         font-size: 1.4rem;
+    }
+
+    .car-title {
+        font-size: 1.5rem;
+    }
+
+    .price {
+        font-size: 1.2rem;
     }
 }
