@@ -113,7 +113,7 @@ li.nav-item:last-of-type {
 .hero {
     /* Use blend-mode multiply to set background image and background color */
     background-blend-mode: multiply;
-    background-image: url("../images/hero_section_img.webp");
+    background-image: url("https://res.cloudinary.com/dd2fwm3fh/image/upload/v1699876309/static/images/hero_section_img.0d623fa7fc70.webp");
     background-color: rgba(72, 69, 69, 0.30);
     background-position: center;
     background-repeat: no-repeat;
