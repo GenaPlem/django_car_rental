@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views import generic
+from django.views.generic import ListView, DetailView
 from .models import Car, Booking
 
 
@@ -12,3 +12,9 @@ from .models import Car, Booking
 
 def home(request):
     return render(request, 'index.html')
+
+
+class CarsListView(ListView):
+    model = Car
+    template_name = 'cars.html'
+    context_object_name = 'cars'
