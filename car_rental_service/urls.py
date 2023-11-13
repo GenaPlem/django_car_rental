@@ -20,6 +20,6 @@ from car_rental import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', views.HomeView.as_view(), name='home'),
     path('cars/', views.CarsListView.as_view(), name='cars-list'),
 ]
