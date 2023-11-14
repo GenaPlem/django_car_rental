@@ -267,6 +267,12 @@ footer {
     color: #FF8A00;
 }
 
+@media (min-width: 576px) {
+    .nav-link {
+        padding: 0 !important;
+    }
+}
+
 @media (min-width: 768px) {
     .container-big {
         max-width: calc(1300px + 9rem);
