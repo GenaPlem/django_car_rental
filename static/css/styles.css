@@ -38,7 +38,7 @@ body {
 main {
     flex: 1;
 }
-
+/* Container to wrap content */
 .container-big {
     max-width: calc(1300px + 4rem);
     padding: 0 2rem;
@@ -51,12 +51,16 @@ main {
     margin: 0 auto;
 }
 
+.title {
+    font-size: 2.8rem;
+    letter-spacing: -0.05625rem;
+}
+
 .orange {
     color: #FF8A00;
 }
 
 .active {
-    /*text-decoration: underline 1px solid #FF8A00;*/
     color: #FF8A00 !important;
 }
 
@@ -90,7 +94,6 @@ main {
 }
 
 .nav-link:hover {
-/*    text-decoration: underline 2px solid #FF8A00;*/
     scale: 1.05;
 }
 
@@ -184,15 +187,6 @@ li.nav-item:last-of-type {
     left: calc(50% - 88px);
 }
 /* About section */
-/*.about {*/
-
-/*}*/
-
-.title {
-    font-size: 2.8rem;
-    letter-spacing: -0.05625rem;
-}
-
 .about-card {
     overflow: hidden;
     border-radius: 15px;
@@ -214,10 +208,6 @@ li.nav-item:last-of-type {
     letter-spacing: -0.04375rem;
 }
 /* Rules section */
-/*.rules {*/
-
-/*}*/
-
 .rules-icon {
     max-height: 75px;
 }
@@ -288,7 +278,7 @@ li.nav-item:last-of-type {
 /* Authentication */
 .authentication {
     background-blend-mode: multiply;
-    background-image: url("../images/rent.webp");
+    background-image: url("https://res.cloudinary.com/dd2fwm3fh/image/upload/v1700059861/static/images/rent.6579f75a4313.webp");
     background-color: rgba(38, 34, 42, 0.60);
     background-position: center;
     background-repeat: no-repeat;

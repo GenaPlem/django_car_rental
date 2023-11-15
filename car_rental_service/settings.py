@@ -32,10 +32,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG') == 'True'
 
 if DEBUG:
-    ALLOWED_HOSTS = ['127.0.0.1']
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 else:
     ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
-# ALLOWED_HOSTS = ['127.0.0.1', 'gg-car-rental-50d3bfa38b5d.herokuapp.com']
 
 # Application definition
 
@@ -56,10 +55,20 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'MANDATORY'
+ACCOUNT_EMAIL_CONFIRMATION_SIGNUP = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
