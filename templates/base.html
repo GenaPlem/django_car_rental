@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>SwiftGo</title>
 </head>
-<body>
+<body class='min-vh-100'>
 <div class="shadow header">
     <header class="container-big">
         <nav class="navbar navbar-expand-sm">
@@ -33,11 +33,24 @@
                         <a href="{% url 'cars-list' %}"
                            class="nav-link text-white {% if request.path == '/cars/' %}active{% endif %} ms-sm-4 fs-4">Cars</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="ms-sm-4">
-                            <button class="fs-4 text-white btn-orange" id="sign_in">Sign Up</button>
-                        </a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="#" class="ms-sm-4" id='profile-link'>
+                                <img src="{% static 'icons/profile.svg' %}" id='profile-icon' alt="Profile icon">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_logout' %}" class="ms-sm-4">
+                                <button class="fs-4 text-white btn-orange" id="sign_in">Log out</button>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'account_login' %}" class="ms-sm-4">
+                                <button class="fs-4 text-white btn-orange" id="sign_in">Sign in</button>
+                            </a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -67,7 +80,7 @@
                 <h3 class="mb-3">Navigation</h3>
                 <a class="footer-link" href="{% url 'home' %}">Home Page</a>
                 <a class="footer-link" href="{% url 'cars-list' %}">Browse Cars</a>
-                <a class="footer-link" href="">Get Started</a>
+                <a class="footer-link" href="{% url 'account_signup' %}">Get Started</a>
             </div>
             <div class="d-flex flex-column text-white align-items-center footer-card">
                 <h3 class="mb-3">Social links</h3>
