@@ -12,3 +12,8 @@ class CarsListView(ListView):
     template_name = 'cars.html'
     context_object_name = 'cars'
     paginate_by = 6
+
+
+class CarDetailsView(DetailView):
+    model = Car
+    template_name = 'car_details.html'
