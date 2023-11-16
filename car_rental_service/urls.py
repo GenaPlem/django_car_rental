@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomeView.as_view(), name='home'),
     path('cars/', views.CarsListView.as_view(), name='cars-list'),
+    path('cars/<int:pk>/', views.CarDetailsView.as_view(), name='car-details'),
     path('accounts/', include('allauth.urls')),
 ]

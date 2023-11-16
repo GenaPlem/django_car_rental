@@ -12,7 +12,7 @@
                              class="d-block w-100 h-auto">
                     </div>
                     <h4 class="car-title">{{ car.make }} {{ car.model }}</h4>
-                    <a href="#" class="align-self-end">
+                    <a href="{% url 'car-details' pk=car.pk %}" class="align-self-end">
                         <button type="button" class="btn-orange text-white price">{{ car.price_per_day }}€ / Day
                         </button>
                     </a>
