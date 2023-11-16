@@ -29,7 +29,6 @@ body {
     font-family: "Crimson Text", sans-serif;
     font-weight: normal;
     font-style: normal;
-    min-height: 100%;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -93,6 +92,10 @@ main {
     align-items: center;
 }
 
+.nav-link {
+    transition: scale 0.2s;
+}
+
 .nav-link:hover {
     scale: 1.05;
 }
@@ -106,6 +109,7 @@ li.nav-item:last-of-type {
     border: 2px solid #FF8A00;
     border-radius: 1rem;
     filter: drop-shadow(4px 8px 4px rgba(0, 0, 0, 0.25));
+    transition: background-color 0.2s;
 }
 
 #sign_in:hover, .btn-orange:hover {
@@ -131,6 +135,7 @@ li.nav-item:last-of-type {
     border-radius: 50%;
     overflow: hidden;
     line-height: 0;
+    transition: scale 0.2s;
 }
 
 #profile-icon {
@@ -256,6 +261,7 @@ li.nav-item:last-of-type {
     color: #26222A;
     padding: 5px 10px !important;
     border-radius: 5px;
+    transition: all 0.2s;
 }
 
 .page-link:hover {
@@ -294,6 +300,11 @@ li.nav-item:last-of-type {
     font-size: 1.3rem;
     width: 7.75rem;
     margin-left: auto;
+    transition: scale 0.2s;
+}
+
+#auth_btn:hover {
+    scale: 1.05;
 }
 
 .form-field label {
@@ -332,6 +343,7 @@ footer {
 .footer-link {
     text-decoration: none;
     color: #fff;
+    transition: color 0.2s;
 }
 
 .footer-link:hover {
