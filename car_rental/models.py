@@ -47,4 +47,4 @@ class Booking(models.Model):
     rules_agreement = models.BooleanField(default=False, blank=False)
 
     def __str__(self):
-        return f"Booking for {self.car} by {self.user}"
+        return f"Booking for {self.car} by {self.name} {self.surname} ({self.user})"
