@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView, DetailView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin # to only authenticated users can fill the form  
+from django.contrib.auth.mixins import LoginRequiredMixin  # to only authenticated users can fill the form
 from .models import Car, Booking
 from .forms import BookingForm
+from .utils import calculate_total_price
 
 
 class HomeView(TemplateView):
@@ -44,5 +45,14 @@ class CarDetailsView(DetailView, FormMixin):
         booking = form.save(commit=False)
         booking.user = self.request.user
         booking.car = self.object
+
+        booking.total_price = calculate_total_price(
+            booking.start_date,
+            booking.end_date,
+            booking.car.price_per_day,
+            booking.child_seat,
+            booking.insurance_type
+        )
+
         booking.save()
         return super(CarDetailsView, self).form_valid(form)
