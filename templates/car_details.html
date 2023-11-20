@@ -14,6 +14,7 @@
                 <p class="mb-1">Transmission type: {{ car.transmission_type|title }}</p>
                 <p class="mb-1">Fuel type: {{ car.fuel_type|title }}</p>
                 <p class="mb-1">Seats: {{ car.seats }}</p>
+                <p class="mb-1" id='price_per_day'><b>Price per Day: </b>{{ car.price_per_day }}€</p>
             </div>
         </div>
         {% if user.is_authenticated %}
@@ -25,10 +26,11 @@
                         <label for="{{ field.id_for_label }}">{{ field.label }}:{{ field }}</label>
                     </div>
                 {% endfor %}
-                <div class="booking-form-field">
+                <div class="booking-form-field d-flex justify-content-between align-items-center">
                     <button type="button" id="booking-rules" data-bs-toggle="modal"
                             data-bs-target="#RentalRulesModal">Read the Rental Rules
                     </button>
+                    <p class="m-0">Total price: <span id="total_price">0€</span></p>
                 </div>
                 <div class="booking-form-field d-flex">
                     <button type="submit" class="btn-orange text-white mx-auto p-2">Confirm booking</button>
@@ -92,4 +94,7 @@
 
         {% endif %}
     </section>
+    {% block scripts %}
+        <script src="{% static 'js/booking.js' %}"></script>
+    {% endblock %}
 {% endblock %}
