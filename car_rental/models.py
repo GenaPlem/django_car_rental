@@ -31,9 +31,9 @@ class Car(models.Model):
 
 class Booking(models.Model):
     INSURANCE_CHOICES = [
-        ('young', 'Young'),
-        ('standart', 'Standart'),
-        ('senior', 'Senior'),
+        ('young', 'Young (+50€)'),
+        ('standart', 'Standart (+40€)'),
+        ('senior', 'Senior (+60€)'),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -45,6 +45,7 @@ class Booking(models.Model):
     child_seat = models.BooleanField(default=False)
     insurance_type = models.CharField(max_length=10, choices=INSURANCE_CHOICES, default='standart')
     rules_agreement = models.BooleanField(default=False, blank=False)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
         return f"Booking for {self.car} by {self.name} {self.surname} ({self.user})"
