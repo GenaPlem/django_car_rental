@@ -331,6 +331,71 @@ li.nav-item:last-of-type {
 .errorlist li {
     list-style-type: none;
 }
+
+.booking-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.booking-form-field label {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.booking-form-field input[type="text"],
+.booking-form-field input[type="email"],
+.booking-form-field input[type="date"],
+.booking-form-field select,
+.booking-form-field input[type="checkbox"] {
+    color: #ffffff;
+    max-width: 100%;
+    width: calc(100% - 8rem);
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ff8a00;
+    margin-bottom: 10px;
+    background-color: inherit;
+}
+
+.booking-form-field input[type="checkbox"] {
+    width: 1rem;
+    margin-right: 0.7rem;
+    height: 1rem;
+}
+
+/* Style for checkboxes and select dropdown */
+.booking-form-field input[type="checkbox"],
+.booking-form-field select,
+.booking-form-field input[type='date'] {
+    cursor: pointer;
+    color: #ffffff;
+}
+
+#booking-rules {
+    border: none;
+    text-decoration: 1px solid underline;
+    background-color: inherit;
+    padding: 0.5rem 0;
+    color: #ffffff;
+}
+
+#booking-rules:hover {
+    color: #ff8a00;
+}
+
+/* Style for the submit button */
+.confirm-booking {
+    background-color: #FA8A00;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 /* Footer section */
 footer {
     border-top: 1px solid #fff;
