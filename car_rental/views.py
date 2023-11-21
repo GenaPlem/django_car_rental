@@ -28,9 +28,18 @@ class CarDetailsView(DetailView, FormMixin):
     def get_success_url(self):
         return reverse_lazy('home')
 
+    def get_form_kwargs(self):
+        """Return the keyword arguments for instantiating the form."""
+        kwargs = super().get_form_kwargs()
+        kwargs['car'] = self.get_object()
+        return kwargs
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         car = self.get_object()
+
+        if 'form' not in context:
+            context['form'] = BookingForm(car=car)
 
         bookings = Booking.objects.filter(car=car)
         booked_dates = []
@@ -43,14 +52,11 @@ class CarDetailsView(DetailView, FormMixin):
 
         context['booked_dates'] = booked_dates
 
-        if 'form' not in context:
-            context['form'] = self.get_form()
-
         return context
 
     def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        form = self.get_form()
+        car = self.get_object()
+        form = BookingForm(request.POST, car=car)
         if form.is_valid():
             return self.form_valid(form)
         else:
@@ -59,7 +65,7 @@ class CarDetailsView(DetailView, FormMixin):
     def form_valid(self, form):
         booking = form.save(commit=False)
         booking.user = self.request.user
-        booking.car = self.object
+        booking.car = self.get_object()
 
         booking.total_price = calculate_total_price(
             booking.start_date,
@@ -71,3 +77,7 @@ class CarDetailsView(DetailView, FormMixin):
 
         booking.save()
         return super(CarDetailsView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        self.object = self.get_object()
+        return self.render_to_response(self.get_context_data(form=form))

@@ -10,7 +10,7 @@ def calculate_total_price(start_date, end_date, car_price_per_day, child_seat, i
         insurance_cost = 40
     elif insurance_type == 'senior':
         insurance_cost = 60
-        
+
     if child_seat:
         child_seat_cost = 15
 
