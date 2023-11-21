@@ -11,7 +11,7 @@ class BookingForm(forms.ModelForm):
             'end_date': forms.TextInput(attrs={'autocomplete': 'off'}),
             'rules_agreement': forms.CheckboxInput(attrs={'required': 'required'}),
         }
-    
+
     def clean_rules_agreement(self):
         rules_agreement = self.cleaned_data.get('rules_agreement')
         if not rules_agreement:

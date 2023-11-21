@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin  # to only authenticat
 from .models import Car, Booking
 from .forms import BookingForm
 from .utils import calculate_total_price
+from datetime import timedelta
 
 
 class HomeView(TemplateView):
@@ -29,8 +30,22 @@ class CarDetailsView(DetailView, FormMixin):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        car = self.get_object()
+
+        bookings = Booking.objects.filter(car=car)
+        booked_dates = []
+
+        for booking in bookings:
+            current_date = booking.start_date
+            while current_date <= booking.end_date:
+                booked_dates.append(current_date.strftime("%m/%d/%Y"))
+                current_date += timedelta(days=1)
+
+        context['booked_dates'] = booked_dates
+
         if 'form' not in context:
             context['form'] = self.get_form()
+
         return context
 
     def post(self, request, *args, **kwargs):

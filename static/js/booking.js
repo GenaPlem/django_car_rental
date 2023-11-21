@@ -36,10 +36,12 @@ const updateTotalPrice = () => {
 const startDatepicker = new Datepicker(startDateInput, {
     minDate: new Date(),
     autohide: true,
+    datesDisabled: bookedDates,
 })
 const endDatepicker = new Datepicker(endDateInput, {
     minDate: new Date(),
     autohide: true,
+    datesDisabled: bookedDates,
 })
 
 /**
