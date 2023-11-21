@@ -48,4 +48,5 @@ class Booking(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
-        return f"Booking for {self.car} by {self.name} {self.surname} ({self.user})"
+        return f"Booking for {self.car} by {self.name} {self.surname} ({self.user}) \
+                from {self.start_date} to {self.end_date}. Total price: {self.total_price}€"
