@@ -2,6 +2,7 @@ const startDateInput = document.getElementById('id_start_date');
 const endDateInput = document.getElementById('id_end_date');
 const insuranceTypeSelect = document.getElementById('id_insurance_type');
 const childSeatCheckbox = document.getElementById('id_child_seat');
+const carSeats = document.getElementById('car_seats');
 const pricePerDayElement = document.getElementById('price_per_day');
 const totalPriceElement = document.getElementById('total_price');
 /**
@@ -30,24 +31,43 @@ const updateTotalPrice = () => {
         totalPriceElement.textContent = total + '€';
     }
 }
+
+/* JS Vanilla Datepicker */
+const startDatepicker = new Datepicker(startDateInput, {
+    minDate: new Date(),
+    autohide: true,
+})
+const endDatepicker = new Datepicker(endDateInput, {
+    minDate: new Date(),
+    autohide: true,
+})
+
 /**
 * Function to update min value of End Date after Start Date changes
 */
-const updateEndDateMin = () => {
-    endDateInput.setAttribute('min', startDateInput.value);
-    if (startDateInput.value > endDateInput.value) {
-        endDateInput.value = startDateInput.value;
-        updateTotalPrice()
-    }
+const updateEndDateMin = (e) => {
+    const selectedDate = e.detail.date;
+    endDatepicker.setOptions({ minDate: selectedDate });
 
+    if (endDateInput.value && new Date(endDateInput.value) < selectedDate) {
+        endDatepicker.setDate(selectedDate);
+    }
+}
+
+/* Function, If car's seats less than 4 than user can't add a child seat */
+const isChildSeatAvailable = () => {
+    if (Number(carSeats.textContent.split(' ')[1]) < 4) {
+        childSeatCheckbox.setAttribute('disabled', 'true')
+    }
 }
 
 /* Booking form listeners */
-startDateInput.addEventListener('change', updateTotalPrice);
-startDateInput.addEventListener('change', updateEndDateMin);
-endDateInput.addEventListener('change', updateTotalPrice);
+startDateInput.addEventListener('changeDate', updateTotalPrice);
+startDateInput.addEventListener('changeDate', updateEndDateMin);
+endDateInput.addEventListener('changeDate', updateTotalPrice);
 insuranceTypeSelect.addEventListener('change', updateTotalPrice);
 childSeatCheckbox.addEventListener('change', updateTotalPrice);
 
 
+isChildSeatAvailable()
 updateTotalPrice()
