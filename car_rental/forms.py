@@ -7,8 +7,8 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = ('name', 'surname', 'start_date', 'end_date', 'child_seat', 'insurance_type', 'rules_agreement')
         widgets = {
-            'start_date': forms.DateInput(attrs={'type': 'date'}),
-            'end_date': forms.DateInput(attrs={'type': 'date'}),
+            'start_date': forms.TextInput(attrs={'autocomplete': 'off'}),
+            'end_date': forms.TextInput(attrs={'autocomplete': 'off'}),
             'rules_agreement': forms.CheckboxInput(attrs={'required': 'required'}),
         }
     
