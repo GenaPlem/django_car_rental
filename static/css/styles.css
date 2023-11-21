@@ -324,11 +324,12 @@ li.nav-item:last-of-type {
 }
 
 .errorlist {
-    margin-left: 1rem;
+    margin-left: 8rem;
     padding-left: 0;
 }
 
 .errorlist li {
+    color: red;
     list-style-type: none;
 }
 
