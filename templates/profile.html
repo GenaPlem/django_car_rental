@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="py-5 container text-white my-5">
+        <h1 class="title text-center mt-2 mt-lg-4">Profile</h1>
+        <div class="profile-header d-flex align-items-center">
+            <div class="profile-icon">
+                <img src="{% static 'icons/profile.svg' %}" alt="User Icon">
+            </div>
+            <h4>Username: {{ request.user.username }}</h4>
+        </div>
+
+        <div class="bookings">
+            <h2>Your bookings:</h2>
+            {% for booking in bookings %}
+            <div class="booking-card d-flex gap-2 gap-sm-4 p-2 p-sm-3 mb-4 position-relative">
+                <div class="car-img d-block overflow-hidden col-5 col-sm-3">
+                        <img src="{{ booking.car.car_image.url }}" alt="{{ car.make }} {{ car.model }}"
+                             class="d-block w-100 h-auto">
+                    </div>
+                <div class="booking-info">
+                    <p class="p-0 m-0 mb-md-2"><b>{{ booking.car.make }} {{ booking.car.model }}</b></p>
+                    <p class="p-0 m-0">Children seat: {{ booking.child_seat|yesno:"Included,No" }}</p>
+                    <p class="p-0 m-0">Insurance type: {{ booking.insurance_type|title }}</p>
+                    <p class="p-0 m-0">From {{ booking.start_date }}<br> to {{ booking.end_date }}</p>
+                    <span class="booking-price text-black">{{ booking.total_price }}€</span>
+                </div>
+                <div class="booking-actions">
+                    
+                </div>
+            </div>
+            {% empty %}
+            <p>No bookings made yet.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

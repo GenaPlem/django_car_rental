@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView, DetailView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin  # to only authenticated users can fill the form
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Car, Booking
 from .forms import BookingForm
 from .utils import calculate_total_price
@@ -26,7 +26,7 @@ class CarDetailsView(DetailView, FormMixin):
     form_class = BookingForm
 
     def get_success_url(self):
-        return reverse_lazy('home')
+        return reverse_lazy('profile')
 
     def get_form_kwargs(self):
         """Return the keyword arguments for instantiating the form."""
@@ -81,3 +81,17 @@ class CarDetailsView(DetailView, FormMixin):
     def form_invalid(self, form):
         self.object = self.get_object()
         return self.render_to_response(self.get_context_data(form=form))
+
+
+class ProfileView(LoginRequiredMixin, ListView):
+    model = Booking
+    template_name = 'profile.html'
+    context_object_name = 'bookings'
+
+    def get_queryset(self):
+        return Booking.objects.filter(user=self.request.user).order_by('start_date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context

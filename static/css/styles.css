@@ -130,8 +130,8 @@ li.nav-item:last-of-type {
 #profile-link {
     scale: 0.8;
     display: block;
-    width: 45px;
-    height: 45px;
+    width: 2.8rem;
+    height: 2.8rem;
     border-radius: 50%;
     overflow: hidden;
     line-height: 0;
@@ -189,12 +189,12 @@ li.nav-item:last-of-type {
     margin: 0 auto;
     position: absolute;
     bottom: 15vh;
-    left: calc(50% - 88px);
+    left: calc(50% - 5.5rem);
 }
 /* About section */
 .about-card {
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 1rem;
     max-width: 100%;
     filter: drop-shadow(0px 0px 4px #fff);
 }
@@ -214,7 +214,7 @@ li.nav-item:last-of-type {
 }
 /* Rules section */
 .rules-icon {
-    max-height: 75px;
+    max-height: 4.6rem;
 }
 
 .rules-title {
@@ -292,7 +292,7 @@ li.nav-item:last-of-type {
 }
 
 #auth_form {
-    max-width: 330px;
+    max-width: 20.6rem;
 }
 
 #auth_btn {
@@ -323,18 +323,25 @@ li.nav-item:last-of-type {
     padding: 0 1rem;
 }
 
-.errorlist {
+.booking-form .errorlist {
     margin-left: 8rem;
     padding-left: 0;
 }
 
-.errorlist li {
+.booking-form .errorlist li {
     color: red;
+}
+
+.errorlist {
+    padding-left: 1rem;
+}
+
+.errorlist li {
     list-style-type: none;
 }
 
 .booking-form {
-    max-width: 500px;
+    max-width: 31.2rem;
     margin: 0 auto;
 }
 
@@ -343,7 +350,7 @@ li.nav-item:last-of-type {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 0.4rem;
     color: #ffffff;
 }
 
@@ -355,10 +362,10 @@ li.nav-item:last-of-type {
     color: #ffffff;
     max-width: 100%;
     width: calc(100% - 8rem);
-    padding: 10px;
+    padding: 0.6rem;
     border: none;
     border-bottom: 2px solid #ff8a00;
-    margin-bottom: 10px;
+    margin-bottom: 0.6rem;
     background-color: inherit;
 }
 
@@ -393,9 +400,32 @@ li.nav-item:last-of-type {
     background-color: #FA8A00;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
+    padding: 0.6rem 1.2rem;
     border-radius: 5px;
     cursor: pointer;
+}
+/* Profile page */
+.profile-icon img {
+    width: 5rem;
+    height: 5rem;
+}
+.booking-card {
+    border: 1px solid;
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 4px 0 rgba(232, 247, 238, 0.50);
+}
+
+.booking-card p, .booking-card span {
+    font-size: 0.8rem;
+}
+
+.booking-price {
+    background-color: #ff8a00;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
 }
 /* Footer section */
 footer {
@@ -419,6 +449,15 @@ footer {
 @media (min-width: 576px) {
     .nav-link {
         padding: 0 !important;
+    }
+    /* Profile page */
+    .booking-card p, .booking-card span {
+        font-size: 1rem;
+    }
+
+    .booking-price {
+        bottom: 1rem;
+        right: 1rem;
     }
 }
 
@@ -454,14 +493,14 @@ footer {
     }
 
     .about-card-img {
-        max-height: 464px;
+        max-height: 29rem;
     }
 
     #rent_now {
         position: unset;
         margin: 5rem 0 0 9.5rem;
-        width: 260px;
-        height: 60px;
+        width: 16.2rem;
+        height: 3.7rem;
         font-size: 2rem;
     }
 
@@ -472,7 +511,7 @@ footer {
     }
 
     .rules-icon {
-        max-height: 90px;
+        max-height: 5.6rem;
     }
 
     .car-title {
@@ -521,5 +560,9 @@ footer {
         max-width: 1040px;
         margin: 8rem auto 2rem !important;
         border-radius: 20px;
+    }
+    /* Profile page */
+    .booking-card p, .booking-card span {
+        font-size: 1.3rem;
     }
 }
