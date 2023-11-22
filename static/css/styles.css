@@ -390,6 +390,24 @@ li.nav-item:last-of-type {
     color: #ffffff;
 }
 
+.booking-form-field label[for='id_start_date'],
+.booking-form-field label[for='id_end_date'] {
+    position: relative;
+}
+
+.booking-form-field label[for='id_start_date']::after,
+.booking-form-field label[for='id_end_date']::after {
+    content: '';
+    background-image: url('../icons/ui_date.svg');
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 0.2rem;
+    cursor: pointer;
+}
+
 #booking-rules {
     border: none;
     text-decoration: 1px solid underline;
@@ -427,6 +445,7 @@ li.nav-item:last-of-type {
 
 .booking-card p, .booking-card span {
     font-size: 0.8rem;
+    cursor: default;
 }
 
 .booking-price {

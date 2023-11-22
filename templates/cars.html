@@ -24,7 +24,8 @@
                 <ul class="pagination justify-content-center mt-5">
                     {% with prev=page_obj.number|add:"-1" next=page_obj.number|add:"1" %}
                         {% if page_obj.number == 1 %}
-                            <li class="page-item"><a class="page-link active" href="?page={{ page_obj.number }}">1</a></li>
+                            <li class="page-item"><a class="page-link active" href="?page={{ page_obj.number }}">1</a>
+                            </li>
                             {% if page_obj.paginator.num_pages > 1 %}
                                 <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
                             {% endif %}
@@ -39,10 +40,12 @@
                             {% if prev > 0 %}
                                 <li class="page-item"><a class="page-link" href="?page={{ prev }}">{{ prev }}</a></li>
                             {% endif %}
-                            <li class="page-item"><a class="page-link active" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                            <li class="page-item"><a class="page-link active"
+                                                     href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
                         {% else %}
                             <li class="page-item"><a class="page-link" href="?page={{ prev }}">{{ prev }}</a></li>
-                            <li class="page-item"><a class="page-link active" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                            <li class="page-item"><a class="page-link active"
+                                                     href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
                             <li class="page-item"><a class="page-link" href="?page={{ next }}">{{ next }}</a></li>
                         {% endif %}
                     {% endwith %}
