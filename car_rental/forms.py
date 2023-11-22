@@ -1,5 +1,6 @@
 from django import forms
 from .models import Booking
+import re
 
 
 class BookingForm(forms.ModelForm):
@@ -14,6 +15,18 @@ class BookingForm(forms.ModelForm):
             'start_date': forms.TextInput(attrs={'autocomplete': 'off'}),
             'end_date': forms.TextInput(attrs={'autocomplete': 'off'}),
         }
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if not re.match(r'^[a-zA-Zа-яА-Я\s]+$', name):
+            raise forms.ValidationError("Name should only contain letters.")
+        return name
+
+    def clean_surname(self):
+        surname = self.cleaned_data.get('surname')
+        if not re.match(r'^[a-zA-Zа-яА-Я\s]+$', surname):
+            raise forms.ValidationError("Surname should only contain letters.")
+        return surname
 
     def clean(self):
         cleaned_data = super().clean()
