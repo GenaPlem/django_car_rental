@@ -1,4 +1,4 @@
-from django.views.generic import ListView, TemplateView, DetailView, UpdateView
+from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -147,3 +147,12 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
 
         booking.save()
         return response
+
+
+class BookingDeleteView(DeleteView):
+    model = Booking
+    success_url = reverse_lazy('booking_list')
+    template_name = 'booking_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
