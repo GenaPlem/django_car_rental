@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import ListView, TemplateView, DetailView, UpdateView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -95,3 +94,56 @@ class ProfileView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['user'] = self.request.user
         return context
+
+
+class BookingEditView(LoginRequiredMixin, UpdateView):
+    model = Booking
+    form_class = BookingForm
+    template_name = 'booking_edit.html'
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def get_queryset(self):
+        return Booking.objects.filter(user=self.request.user)
+
+    def get_form_kwargs(self):
+        kwargs = super(BookingEditView, self).get_form_kwargs()
+        booking = self.get_object()
+        kwargs['car'] = booking.car
+        return kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super(BookingEditView, self).get_context_data(**kwargs)
+        booking = self.get_object()
+        car = booking.car
+
+        context['start_date'] = booking.start_date.strftime("%m/%d/%Y")
+        context['end_date'] = booking.end_date.strftime("%m/%d/%Y")
+
+        other_bookings = Booking.objects.filter(car=car).exclude(id=booking.id)
+        booked_dates = []
+        for other_booking in other_bookings:
+            current_date = other_booking.start_date
+            while current_date <= other_booking.end_date:
+                booked_dates.append(current_date.strftime("%m/%d/%Y"))
+                current_date += timedelta(days=1)
+
+        context['booked_dates'] = booked_dates
+        context['car'] = car
+        return context
+
+    def form_valid(self, form):
+        response = super(BookingEditView, self).form_valid(form)
+        booking = form.save(commit=False)
+
+        booking.total_price = calculate_total_price(
+            booking.start_date,
+            booking.end_date,
+            booking.car.price_per_day,
+            booking.child_seat,
+            booking.insurance_type
+        )
+
+        booking.save()
+        return response
