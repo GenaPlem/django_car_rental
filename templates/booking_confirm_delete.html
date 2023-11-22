@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="py-5 container my-5 text-white">
+        <h1 class="text-center mt-2 mt-lg-4">Are you sure you want to cancel this booking?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center gap-4 mt-5">
+                <a href="{% url 'profile' %}">
+                    <button type="button" class="btn-orange text-white">No I don't</button>
+                </a>
+                <input type="submit" class="btn-orange text-white" value="Confirm">
+            </div>
+        </form>
+    </section>
+{% endblock %}
