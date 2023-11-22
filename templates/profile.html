@@ -27,7 +27,7 @@
                         <span class="booking-price text-black">{{ booking.total_price }}€</span>
                     </div>
                     <div class="booking-actions d-flex gap-2 gap-sm-3">
-                        <a href="#"><img src="{% static 'icons/btn-edit.svg' %}" alt="Edit booking"></a>
+                        <a href="{% url 'booking_edit' pk=booking.pk %}"><img src="{% static 'icons/btn-edit.svg' %}" alt="Edit booking"></a>
                         <a href="#"><img src="{% static 'icons/btn-delete.svg' %}" alt="Cancel booking"></a>
                     </div>
                 </div>

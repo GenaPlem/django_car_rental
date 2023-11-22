@@ -432,7 +432,7 @@ li.nav-item:last-of-type {
 .booking-price {
     background-color: #ff8a00;
     border-radius: 1rem;
-    padding: 0.2rem;
+    padding: 0.3rem;
     position: absolute;
     bottom: 0.5rem;
     right: 0.5rem;
@@ -474,6 +474,11 @@ footer {
     }
 
     /* Profile page */
+    .profile-icon img {
+        width: 7rem;
+        height: 7rem;
+    }
+
     .booking-card p, .booking-card span {
         font-size: 1rem;
     }
@@ -596,6 +601,11 @@ footer {
     }
 
     /* Profile page */
+    .profile-icon img {
+        width: 9rem;
+        height: 9rem;
+    }
+
     .booking-card p, .booking-card span {
         font-size: 1.3rem;
     }

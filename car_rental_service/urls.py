@@ -16,13 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from car_rental import views
+from car_rental.views import HomeView, CarsListView, CarDetailsView, ProfileView, BookingEditView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.HomeView.as_view(), name='home'),
-    path('cars/', views.CarsListView.as_view(), name='cars-list'),
-    path('cars/<int:pk>/', views.CarDetailsView.as_view(), name='car-details'),
-    path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('', HomeView.as_view(), name='home'),
+    path('cars/', CarsListView.as_view(), name='cars-list'),
+    path('cars/<int:pk>/', CarDetailsView.as_view(), name='car-details'),
+    path('profile/', ProfileView.as_view(), name='profile'),
+    path('booking/<int:pk>/edit/', BookingEditView.as_view(), name='booking_edit'),
     path('accounts/', include('allauth.urls')),
 ]
