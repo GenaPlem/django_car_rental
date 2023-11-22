@@ -37,6 +37,7 @@ body {
 main {
     flex: 1;
 }
+
 /* Container to wrap content */
 .container-big {
     max-width: calc(1300px + 4rem);
@@ -66,6 +67,7 @@ main {
 .d-contents {
     display: contents;
 }
+
 /* Header section */
 .header {
     position: fixed;
@@ -126,6 +128,7 @@ li.nav-item:last-of-type {
     width: 10rem;
     height: 2.5rem;
 }
+
 /* Add two id's for profile icon link to be circle */
 #profile-link {
     scale: 0.8;
@@ -152,6 +155,7 @@ li.nav-item:last-of-type {
 .price {
     font-size: 0.8rem;
 }
+
 /* Hero section */
 .hero {
     /* Use blend-mode multiply to set background image and background color */
@@ -191,6 +195,7 @@ li.nav-item:last-of-type {
     bottom: 15vh;
     left: calc(50% - 5.5rem);
 }
+
 /* About section */
 .about-card {
     overflow: hidden;
@@ -212,6 +217,7 @@ li.nav-item:last-of-type {
     font-size: 2.2rem;
     letter-spacing: -0.04375rem;
 }
+
 /* Rules section */
 .rules-icon {
     max-height: 4.6rem;
@@ -229,6 +235,7 @@ li.nav-item:last-of-type {
     width: 5rem;
     height: 2.2rem;
 }
+
 /* Cars Page */
 .car-img {
     position: relative;
@@ -404,12 +411,15 @@ li.nav-item:last-of-type {
     border-radius: 5px;
     cursor: pointer;
 }
+
 /* Profile page */
 .profile-icon img {
     width: 5rem;
     height: 5rem;
 }
+
 .booking-card {
+    max-width: 60rem;
     border: 1px solid;
     border-radius: 1.2rem;
     box-shadow: 0 4px 4px 0 rgba(232, 247, 238, 0.50);
@@ -427,6 +437,18 @@ li.nav-item:last-of-type {
     bottom: 0.5rem;
     right: 0.5rem;
 }
+
+.booking-actions {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.booking-actions a:hover {
+    scale: 1.1;
+    transition: scale 0.2s;
+}
+
 /* Footer section */
 footer {
     border-top: 1px solid #fff;
@@ -450,6 +472,7 @@ footer {
     .nav-link {
         padding: 0 !important;
     }
+
     /* Profile page */
     .booking-card p, .booking-card span {
         font-size: 1rem;
@@ -458,6 +481,11 @@ footer {
     .booking-price {
         bottom: 1rem;
         right: 1rem;
+    }
+
+    .booking-actions img {
+        width: 1.3rem;
+        height: 1.3rem;
     }
 }
 
@@ -525,6 +553,11 @@ footer {
     .page-link {
         font-size: 1rem;
     }
+
+    .booking-actions img {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -561,8 +594,14 @@ footer {
         margin: 8rem auto 2rem !important;
         border-radius: 20px;
     }
+
     /* Profile page */
     .booking-card p, .booking-card span {
         font-size: 1.3rem;
+    }
+
+    .booking-actions img {
+        width: 1.7rem;
+        height: 1.7rem;
     }
 }

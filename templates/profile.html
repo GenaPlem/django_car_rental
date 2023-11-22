@@ -11,27 +11,28 @@
             <h4>Username: {{ request.user.username }}</h4>
         </div>
 
-        <div class="bookings">
+        <div class="bookings mt-5">
             <h2>Your bookings:</h2>
             {% for booking in bookings %}
-            <div class="booking-card d-flex gap-2 gap-sm-4 p-2 p-sm-3 mb-4 position-relative">
-                <div class="car-img d-block overflow-hidden col-5 col-sm-3">
+                <div class="booking-card d-flex gap-2 gap-sm-4 p-2 p-sm-3 mb-4 position-relative mx-auto">
+                    <div class="car-img d-block overflow-hidden col-5 col-sm-3">
                         <img src="{{ booking.car.car_image.url }}" alt="{{ car.make }} {{ car.model }}"
                              class="d-block w-100 h-auto">
                     </div>
-                <div class="booking-info">
-                    <p class="p-0 m-0 mb-md-2"><b>{{ booking.car.make }} {{ booking.car.model }}</b></p>
-                    <p class="p-0 m-0">Children seat: {{ booking.child_seat|yesno:"Included,No" }}</p>
-                    <p class="p-0 m-0">Insurance type: {{ booking.insurance_type|title }}</p>
-                    <p class="p-0 m-0">From {{ booking.start_date }}<br> to {{ booking.end_date }}</p>
-                    <span class="booking-price text-black">{{ booking.total_price }}€</span>
+                    <div class="booking-info">
+                        <p class="p-0 m-0 mb-md-2"><b>{{ booking.car.make }} {{ booking.car.model }}</b></p>
+                        <p class="p-0 m-0">Children seat: {{ booking.child_seat|yesno:"Included,No" }}</p>
+                        <p class="p-0 m-0">Insurance type: {{ booking.insurance_type|title }}</p>
+                        <p class="p-0 m-0">From {{ booking.start_date }}<br> to {{ booking.end_date }}</p>
+                        <span class="booking-price text-black">{{ booking.total_price }}€</span>
+                    </div>
+                    <div class="booking-actions d-flex gap-2 gap-sm-3">
+                        <a href="#"><img src="{% static 'icons/btn-edit.svg' %}" alt="Edit booking"></a>
+                        <a href="#"><img src="{% static 'icons/btn-delete.svg' %}" alt="Cancel booking"></a>
+                    </div>
                 </div>
-                <div class="booking-actions">
-                    
-                </div>
-            </div>
-            {% empty %}
-            <p>No bookings made yet.</p>
+                {% empty %}
+                <p>No bookings made yet.</p>
             {% endfor %}
         </div>
     </section>
