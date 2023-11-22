@@ -20,12 +20,16 @@ class BookingForm(forms.ModelForm):
         name = self.cleaned_data.get('name')
         if not re.match(r'^[a-zA-Zа-яА-Я\s]+$', name):
             raise forms.ValidationError("Name should only contain letters.")
+        if len(name) < 3:
+            raise forms.ValidationError("Name should be more than 2 symbols.")
         return name
 
     def clean_surname(self):
         surname = self.cleaned_data.get('surname')
         if not re.match(r'^[a-zA-Zа-яА-Я\s]+$', surname):
             raise forms.ValidationError("Surname should only contain letters.")
+        if len(surname) < 3:
+            raise forms.ValidationError("Surname should be more than 2 symbols.")
         return surname
 
     def clean(self):
