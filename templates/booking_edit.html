@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker.min.css">
+{% endblock %}
+
+{% block content %}
+    <section class="py-5 container my-5 text-white">
+        <h1 class="title text-center mt-2 mt-lg-4">Car Reservation</h1>
+        <div class="car-detail d-flex flex-column flex-sm-row justify-content-sm-center">
+            <div class="car-img d-block overflow-hidden mb-2 col-8 col-sm-4 mx-auto mx-sm-0">
+                <img src="{{ car.car_image.url }}" alt="{{ car.make }} {{ car.model }}" class="d-block w-100 h-auto">
+            </div>
+            <div class="car-info col-sm-6 px-sm-4">
+                <h2 class="mb-1">{{ car.make }} {{ car.model }}</h2>
+                <p class="mb-1">Year: {{ car.year }}</p>
+                <p class="mb-1">Transmission type: {{ car.transmission_type|title }}</p>
+                <p class="mb-1">Fuel type: {{ car.fuel_type|title }}</p>
+                <p class="mb-1" id="car_seats">Seats: {{ car.seats }}</p>
+                <p class="mb-1" id='price_per_day'><b>Price per Day: </b>{{ car.price_per_day }}€</p>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <form method="post" class="booking-form d-flex flex-column my-3">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.name == 'start_date' %}
+                        <div class="booking-form-field">
+                            <label for="{{ field.id_for_label }}">From:
+                                <input type="text" name="start_date" id="id_start_date" value="{{ start_date }}">
+                            </label>
+                            {{ field.errors }}
+                        </div>
+                    {% elif field.name == 'end_date' %}
+                        <div class="booking-form-field">
+                            <label for="{{ field.id_for_label }}">To:
+                                <input type="text" name="end_date" id="id_end_date" value="{{ end_date }}">
+                            </label>
+                            {{ field.errors }}
+                        </div>
+                    {% elif field.name == 'child_seat' %}
+                        <div class="booking-form-field">
+                            <label for="{{ field.id_for_label }}">Child seat (+15€):{{ field }}</label>
+                            {{ field.errors }}
+                        </div>
+                    {% else %}
+                        <div class="booking-form-field">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}:{{ field }}</label>
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="booking-form-field d-flex justify-content-between align-items-center">
+                    <button type="button" id="booking-rules" data-bs-toggle="modal"
+                            data-bs-target="#RentalRulesModal">Read the Rental Rules
+                    </button>
+                    <p class="m-0">Total price: <span id="total_price">0€</span></p>
+                </div>
+                <div class="booking-form-field d-flex">
+                    <button type="submit" class="btn-orange text-white mx-auto p-2">Save changes</button>
+                </div>
+            </form>
+            <div class="modal fade text-white" tabindex="-1" id="RentalRulesModal">
+                <div class="modal-dialog modal-dialog-scrollable ">
+                    <div class="modal-content">
+                        <div class="modal-header shadow">
+                            <h5 class="modal-title">Rental Rules</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p><b>Driving License:</b> A valid driving license with a minimum of 2 years of driving
+                                experience is required.</p>
+                            <p><b>Age-Based Insurance:</b></p>
+                            <ul>
+                                <li>Ages 20-25: Young Driver Insurance</li>
+                                <li>Ages 25-50: Standard Driver Insurance</li>
+                                <li>Ages 50+: Senior Driver Insurance</li>
+                            </ul>
+                            <p><b>Mileage Limit:</b> Each rental comes with a standard daily mileage limit. Excess
+                                mileage
+                                will incur additional charges.</p>
+                            <p><b>Fuel Policy:</b> Vehicles must be returned with the same amount of fuel as at the
+                                start of
+                                the rental to avoid refueling charges.</p>
+                            <p><b>Additional Drivers:</b> Must be registered at the time of rental and meet the same
+                                requirements as the primary driver.</p>
+                            <p><b>Damage Policy:</b> Any damage to the vehicle not covered by insurance will be the
+                                responsibility of the renter.</p>
+                            <p><b>Late Return:</b> Late returns may be subject to extra day charges at the daily rate.
+                            </p>
+                            <p><b>Booking Cancellation:</b> Free cancellation up to 48 hours before the pick-up time.
+                                Late
+                                cancellations may incur a fee.</p>
+                            <p><b>No Smoking:</b> All vehicles are non-smoking. A cleaning fee will be charged if this
+                                rule
+                                is violated.</p>
+                            <p><b>Prohibited Use:</b> Vehicles cannot be used for off-roading, racing, or any illegal
+                                activities.</p>
+                            <p><b>Geographical Restrictions:</b> Vehicles must not be taken out of the predefined rental
+                                area without prior approval.</p>
+                            <p><b>Payment:</b> Rental charges must be paid in full at the time of vehicle pick-up.</p>
+                            <p><b>Vehicle Condition:</b> The renter agrees to maintain the vehicle's condition,
+                                reporting
+                                any mechanical issues immediately.</p>
+                            <p><b>Emergency Procedures:</b> In case of an accident or emergency, renters must follow the
+                                outlined procedures provided at the time of rental.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-orange text-white" id="close_modal"
+                                    data-bs-dismiss="modal">
+                                Okay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h3>To book a car you have to sign in first</h3>
+
+        {% endif %}
+    </section>
+    {% block scripts %}
+        <script type="text/javascript">
+            let bookedDates = {{ booked_dates|safe }};
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
+        <script src="{% static 'js/booking.js' %}"></script>
+    {% endblock %}
+{% endblock %}
