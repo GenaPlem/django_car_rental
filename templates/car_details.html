@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="pt-5 container mt-5 text-white">
+    <section class="py-5 container my-5 text-white">
         <h1 class="title text-center mt-2 mt-lg-4">Car Reservation</h1>
         <div class="car-detail d-flex flex-column flex-sm-row justify-content-sm-center">
             <div class="car-img d-block overflow-hidden mb-2 col-8 col-sm-4 mx-auto mx-sm-0">
@@ -33,6 +33,11 @@
                     {% elif field.name == 'end_date' %}
                         <div class="booking-form-field">
                             <label for="{{ field.id_for_label }}">To:{{ field }}</label>
+                            {{ field.errors }}
+                        </div>
+                    {% elif field.name == 'child_seat' %}
+                        <div class="booking-form-field">
+                            <label for="{{ field.id_for_label }}">Child seat (+15€):{{ field }}</label>
                             {{ field.errors }}
                         </div>
                     {% else %}

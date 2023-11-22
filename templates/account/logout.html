@@ -8,7 +8,7 @@
     <section class='text-white py-5 my-5 d-flex align-items-center flex-column container'>
         <h1 class="title mt-5">{% trans "Sign Out" %}</h1>
 
-        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+        <p class="fs-5">{% trans 'Are you sure you want to sign out?' %}</p>
 
         <form method="post" id="auth_form" action="{% url 'account_logout' %}">
             {% csrf_token %}

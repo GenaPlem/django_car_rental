@@ -6,8 +6,8 @@ const carSeats = document.getElementById('car_seats');
 const pricePerDayElement = document.getElementById('price_per_day');
 const totalPriceElement = document.getElementById('total_price');
 /**
-* Function to update booking total price
-*/
+ * Function to update booking total price
+ */
 const updateTotalPrice = () => {
     let startDate = startDateInput.value;
     let endDate = endDateInput.value;
@@ -17,7 +17,7 @@ const updateTotalPrice = () => {
 
     let insuranceCost = insuranceType === 'young' ? 50 : (insuranceType === 'senior' ? 60 : 40);
     let childSeatCost = childSeat ? 15 : 0;
-    
+
     if (startDate && endDate) {
         let start = new Date(startDate);
         let end = new Date(endDate);
@@ -45,11 +45,11 @@ const endDatepicker = new Datepicker(endDateInput, {
 })
 
 /**
-* Function to update min value of End Date after Start Date changes
-*/
+ * Function to update min value of End Date after Start Date changes
+ */
 const updateEndDateMin = (e) => {
     const selectedDate = e.detail.date;
-    endDatepicker.setOptions({ minDate: selectedDate });
+    endDatepicker.setOptions({minDate: selectedDate});
 
     if (endDateInput.value && new Date(endDateInput.value) < selectedDate) {
         endDatepicker.setDate(selectedDate);
