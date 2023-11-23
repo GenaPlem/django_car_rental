@@ -1,6 +1,7 @@
 from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Car, Booking
 from .forms import BookingForm
@@ -75,10 +76,12 @@ class CarDetailsView(DetailView, FormMixin):
         )
 
         booking.save()
+        messages.success(self.request, 'Booking was successfully created!')
         return super(CarDetailsView, self).form_valid(form)
 
     def form_invalid(self, form):
         self.object = self.get_object()
+        messages.error(self.request, 'Something wrong with your booking!')
         return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -118,15 +121,12 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
         booking = self.get_object()
         car = booking.car
 
-        context['start_date'] = booking.start_date.strftime("%m/%d/%Y")
-        context['end_date'] = booking.end_date.strftime("%m/%d/%Y")
-
         other_bookings = Booking.objects.filter(car=car).exclude(id=booking.id)
         booked_dates = []
         for other_booking in other_bookings:
             current_date = other_booking.start_date
             while current_date <= other_booking.end_date:
-                booked_dates.append(current_date.strftime("%m/%d/%Y"))
+                booked_dates.append(current_date.strftime("%d/%m/%Y"))
                 current_date += timedelta(days=1)
 
         context['booked_dates'] = booked_dates
@@ -146,7 +146,13 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
         )
 
         booking.save()
+        messages.success(self.request, 'Booking was successfully edited!')
         return response
+
+    def form_invalid(self, form):
+        self.object = self.get_object()
+        messages.error(self.request, 'Something wrong with your booking!')
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class BookingDeleteView(DeleteView):
@@ -155,4 +161,5 @@ class BookingDeleteView(DeleteView):
     template_name = 'booking_confirm_delete.html'
 
     def get_success_url(self):
+        messages.success(self.request, 'Booking was successfully canceled!')
         return reverse_lazy('profile')
