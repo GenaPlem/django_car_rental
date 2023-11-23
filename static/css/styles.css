@@ -201,7 +201,8 @@ li.nav-item:last-of-type {
     overflow: hidden;
     border-radius: 1rem;
     max-width: 100%;
-    filter: drop-shadow(0px 0px 4px #fff);
+    border: 1px solid #fff;
+    box-shadow: 0 2px 4px #fff;
 }
 
 .about-card-img {
@@ -330,6 +331,7 @@ li.nav-item:last-of-type {
     padding: 0 1rem;
 }
 
+/* Booking form */
 .booking-form .errorlist {
     margin-left: 8rem;
     padding-left: 0;
@@ -376,6 +378,13 @@ li.nav-item:last-of-type {
     background-color: inherit;
 }
 
+.booking-form-field input[type="text"],
+.booking-form-field input[type="email"],
+.booking-form-field input[type="date"],
+.booking-form-field select {
+    -webkit-appearance: none;
+}
+
 .booking-form-field input[type="checkbox"] {
     width: 1rem;
     margin-right: 0.7rem;
@@ -398,7 +407,7 @@ li.nav-item:last-of-type {
 .booking-form-field label[for='id_start_date']::after,
 .booking-form-field label[for='id_end_date']::after {
     content: '';
-    background-image: url('../icons/ui_date.svg');
+    background-image: url('https://res.cloudinary.com/dd2fwm3fh/raw/upload/v1700664857/static/icons/ui_date.9b45aafae9d6.svg');
     background-repeat: no-repeat;
     width: 1.5rem;
     height: 1.5rem;
