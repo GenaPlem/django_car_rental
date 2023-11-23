@@ -75,7 +75,7 @@ main {
     right: 0;
     left: 0;
     background-color: #26222A;
-    z-index: 999;
+    z-index: 1000;
 }
 
 .logo {
@@ -380,8 +380,7 @@ li.nav-item:last-of-type {
 
 .booking-form-field input[type="text"],
 .booking-form-field input[type="email"],
-.booking-form-field input[type="date"],
-.booking-form-field select {
+.booking-form-field input[type="date"] {
     -webkit-appearance: none;
 }
 
@@ -475,6 +474,61 @@ li.nav-item:last-of-type {
 .booking-actions a:hover {
     scale: 1.1;
     transition: scale 0.2s;
+}
+
+/* Alerts */
+.my-alert {
+    position: fixed;
+    top: 7rem;
+    right: 1rem;
+    z-index: 999;
+    padding: 1rem;
+    color: #ffffff;
+    background-color: inherit;
+    border: 2px solid #ff8a00;
+    border-radius: 1rem;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.30);
+    animation: slideDown 0.5s ease-out;
+}
+
+.my-alert p {
+    padding: 0;
+    margin: 0;
+}
+
+.my-alert.error {
+    color: red;
+    border-color: red;
+}
+
+.my-alert.show {
+    animation: slideDown 0.5s forwards;
+}
+
+.my-alert.hide {
+    animation: slideUp 0.5s forwards;
+}
+
+@keyframes slideUp {
+    from {
+        top: 7rem;
+        opacity: 1;
+    }
+    to {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 7rem;
+        opacity: 1;
+    }
 }
 
 /* Footer section */

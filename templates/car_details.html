@@ -32,7 +32,7 @@
                         </div>
                     {% elif field.name == 'end_date' %}
                         <div class="booking-form-field">
-                            <label for="{{ field.id_for_label }}">To:{{ field }}</label>
+                            <label for="{{ field.id_for_label }}">To (max 1 month):{{ field }}</label>
                             {{ field.errors }}
                         </div>
                     {% elif field.name == 'child_seat' %}
