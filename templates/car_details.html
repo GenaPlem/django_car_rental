@@ -37,10 +37,10 @@
                         </div>
                     {% elif field.name == 'child_seat' %}
                         {% if car.seats >= 4 %}
-                        <div class="booking-form-field">
-                            <label for="{{ field.id_for_label }}">Child seat (+15€):{{ field }}</label>
-                            {{ field.errors }}
-                        </div>
+                            <div class="booking-form-field">
+                                <label for="{{ field.id_for_label }}">Child seat (+15€):{{ field }}</label>
+                                {{ field.errors }}
+                            </div>
                         {% endif %}
                     {% else %}
                         <div class="booking-form-field">
@@ -66,7 +66,7 @@
                             <h5 class="modal-title">Rental Rules</h5>
                         </div>
                         <div class="modal-body">
-                            <p><b>Driving License:</b> A valid driving license with a minimum of 2 years of driving
+                            <p><b>Driving License:</b><br> A valid driving license with a minimum of 2 years of driving
                                 experience is required.</p>
                             <p><b>Age-Based Insurance:</b></p>
                             <ul>
@@ -74,33 +74,51 @@
                                 <li>Ages 25-50: Standard Driver Insurance</li>
                                 <li>Ages 50+: Senior Driver Insurance</li>
                             </ul>
-                            <p><b>Mileage Limit:</b> Each rental comes with a standard daily mileage limit. Excess
+                            <p><b>Mileage Limit:</b><br> Each rental comes with a standard daily mileage limit. Excess
                                 mileage
                                 will incur additional charges.</p>
-                            <p><b>Fuel Policy:</b> Vehicles must be returned with the same amount of fuel as at the
+                            <p><b>Maximum Booking Duration:</b><br> Please note that the maximum duration for booking
+                                any of
+                                our
+                                vehicles is limited to one month. This policy is in place to ensure the highest
+                                standards of
+                                vehicle maintenance and safety. We conduct comprehensive checks and servicing of all our
+                                cars on a monthly basis. This routine maintenance helps us ensure that every vehicle in
+                                our
+                                fleet is in optimal condition, providing you with a safe and reliable driving
+                                experience.
+                            </p>
+                            <p><b>Fuel Policy:</b><br> Vehicles must be returned with the same amount of fuel as at the
                                 start of
                                 the rental to avoid refueling charges.</p>
-                            <p><b>Additional Drivers:</b> Must be registered at the time of rental and meet the same
+                            <p><b>Additional Drivers:</b><br> Must be registered at the time of rental and meet the same
                                 requirements as the primary driver.</p>
-                            <p><b>Damage Policy:</b> Any damage to the vehicle not covered by insurance will be the
+                            <p><b>Damage Policy:</b><br> Any damage to the vehicle not covered by insurance will be the
                                 responsibility of the renter.</p>
-                            <p><b>Late Return:</b> Late returns may be subject to extra day charges at the daily rate.
+                            <p><b>Late Return:</b><br> Late returns may be subject to extra day charges at the daily
+                                rate.
                             </p>
-                            <p><b>Booking Cancellation:</b> Free cancellation up to 48 hours before the pick-up time.
+                            <p><b>Booking Cancellation:</b><br> Free cancellation up to 48 hours before the pick-up
+                                time.
                                 Late
                                 cancellations may incur a fee.</p>
-                            <p><b>No Smoking:</b> All vehicles are non-smoking. A cleaning fee will be charged if this
+                            <p><b>No Smoking:</b><br> All vehicles are non-smoking. A cleaning fee will be charged if
+                                this
                                 rule
                                 is violated.</p>
-                            <p><b>Prohibited Use:</b> Vehicles cannot be used for off-roading, racing, or any illegal
+                            <p><b>Prohibited Use:</b><br> Vehicles cannot be used for off-roading, racing, or any
+                                illegal
                                 activities.</p>
-                            <p><b>Geographical Restrictions:</b> Vehicles must not be taken out of the predefined rental
+                            <p><b>Geographical Restrictions:</b><br> Vehicles must not be taken out of the predefined
+                                rental
                                 area without prior approval.</p>
-                            <p><b>Payment:</b> Rental charges must be paid in full at the time of vehicle pick-up.</p>
-                            <p><b>Vehicle Condition:</b> The renter agrees to maintain the vehicle's condition,
+                            <p><b>Payment:</b><br> Rental charges must be paid in full at the time of vehicle pick-up.
+                            </p>
+                            <p><b>Vehicle Condition:</b><br> The renter agrees to maintain the vehicle's condition,
                                 reporting
                                 any mechanical issues immediately.</p>
-                            <p><b>Emergency Procedures:</b> In case of an accident or emergency, renters must follow the
+                            <p><b>Emergency Procedures:</b><br> In case of an accident or emergency, renters must follow
+                                the
                                 outlined procedures provided at the time of rental.</p>
                         </div>
                         <div class="modal-footer">
