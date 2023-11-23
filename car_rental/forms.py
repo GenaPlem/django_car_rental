@@ -1,5 +1,6 @@
 from django import forms
 from .models import Booking
+from datetime import datetime, timedelta
 import re
 
 
@@ -36,6 +37,18 @@ class BookingForm(forms.ModelForm):
         cleaned_data = super().clean()
         start_date = cleaned_data.get("start_date")
         end_date = cleaned_data.get("end_date")
+        today = datetime.today().date()
+
+        if start_date:
+            if start_date < today:
+                self.add_error('start_date', 'The start date cannot be in the past.')
+
+        if start_date and end_date:
+            if end_date < start_date:
+                self.add_error('end_date', 'The end date must be after the start date.')
+
+        if end_date > start_date + timedelta(days=30):
+            self.add_error('end_date', 'The booking cannot be longer than one month.')
 
         if start_date and end_date and self.car:
             overlapping_bookings = Booking.objects.filter(
