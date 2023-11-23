@@ -40,10 +40,12 @@
                             {{ field.errors }}
                         </div>
                     {% elif field.name == 'child_seat' %}
+                        {% if car.seats >= 4 %}
                         <div class="booking-form-field">
                             <label for="{{ field.id_for_label }}">Child seat (+15€):{{ field }}</label>
                             {{ field.errors }}
                         </div>
+                        {% endif %}
                     {% else %}
                         <div class="booking-form-field">
                             <label for="{{ field.id_for_label }}">{{ field.label }}:{{ field }}</label>
