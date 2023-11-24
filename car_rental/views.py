@@ -166,3 +166,7 @@ class BookingDeleteView(DeleteView):
     def get_success_url(self):
         messages.success(self.request, 'Booking was successfully canceled!')
         return reverse_lazy('profile')
+
+
+class PrivacyPolicyView(TemplateView):
+    template_name = 'privacy_policy.html'

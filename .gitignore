@@ -4,6 +4,7 @@ core.python*
 env.py
 __pycache__/
 .idea
+.DS_Store
 *.py[cod]
 node_modules/
 .github/
