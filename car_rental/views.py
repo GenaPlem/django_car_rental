@@ -19,6 +19,9 @@ class CarsListView(ListView):
     context_object_name = 'cars'
     paginate_by = 6
 
+    def get_queryset(self):
+        return Car.objects.filter(available=True)
+
 
 class CarDetailsView(DetailView, FormMixin):
     model = Car
