@@ -58,7 +58,6 @@ class BookingForm(forms.ModelForm):
             ).exclude(pk=self.instance.pk).exists()
 
             if overlapping_bookings:
-                self.add_error('start_date', '')
                 self.add_error('end_date', 'This car is already booked for some of your selected dates.')
 
         return cleaned_data

@@ -47,7 +47,7 @@ class CarDetailsView(DetailView, FormMixin):
         for booking in bookings:
             current_date = booking.start_date
             while current_date <= booking.end_date:
-                booked_dates.append(current_date.strftime("%m/%d/%Y"))
+                booked_dates.append(current_date.strftime("%Y-%m-%d"))
                 current_date += timedelta(days=1)
 
         context['booked_dates'] = booked_dates
@@ -126,7 +126,7 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
         for other_booking in other_bookings:
             current_date = other_booking.start_date
             while current_date <= other_booking.end_date:
-                booked_dates.append(current_date.strftime("%d/%m/%Y"))
+                booked_dates.append(current_date.strftime("%Y-%m-%d"))
                 current_date += timedelta(days=1)
 
         context['booked_dates'] = booked_dates

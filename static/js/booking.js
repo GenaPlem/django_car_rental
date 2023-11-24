@@ -37,11 +37,13 @@ const startDatepicker = new Datepicker(startDateInput, {
     minDate: new Date(),
     autohide: true,
     datesDisabled: bookedDates,
+    format: 'yyyy-mm-dd'
 })
 const endDatepicker = new Datepicker(endDateInput, {
     minDate: new Date(),
     autohide: true,
     datesDisabled: bookedDates,
+    format: 'yyyy-mm-dd'
 })
 
 /**
