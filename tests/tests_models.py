@@ -16,8 +16,7 @@ class CarModelTest(TestCase):
                            transmission_type='manual',
                            fuel_type='petrol',
                            price_per_day=Decimal('200.00'),
-                           car_image=car_image_url,
-                           available=True
+                           car_image=car_image_url
                            )
 
     def test_car_attributes(self):
@@ -43,9 +42,17 @@ class CarModelTest(TestCase):
         car = Car.objects.get(id=1)
         self.assertIn(car.transmission_type, [choice[0] for choice in Car.TRANSMISSION_CHOICES])
 
+    def test_fuel_type_choices(self):
+        car = Car.objects.get(id=1)
+        self.assertIn(car.fuel_type, [choice[0] for choice in Car.FUEL_CHOICES])
+
     def test_cloudinary_image_field(self):
         car = Car.objects.get(id=1)
         self.assertIn('res.cloudinary.com', car.car_image.url)
+
+    def test_default_availability(self):
+        car = Car.objects.get(id=1)
+        self.assertTrue(car.available)
 
 
 class BookingModelTest(TestCase):
@@ -93,3 +100,13 @@ class BookingModelTest(TestCase):
     def test_insurance_type_choices(self):
         booking = Booking.objects.get(id=1)
         self.assertIn(booking.insurance_type, [choice[0] for choice in Booking.INSURANCE_CHOICES])
+
+    def test_delete_user_deletes_related_bookings(self):
+        user = User.objects.get(username='testuser')
+        user.delete()
+        self.assertFalse(Booking.objects.filter(user=user).exists())
+
+    def test_delete_car_deletes_related_bookings(self):
+        car = Car.objects.get(id=1)
+        car.delete()
+        self.assertFalse(Booking.objects.filter(car=car).exists())
