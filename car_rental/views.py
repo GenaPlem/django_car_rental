@@ -3,9 +3,9 @@ from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Car, Booking
-from .forms import BookingForm
-from .utils import calculate_total_price
+from car_rental.models import Car, Booking
+from car_rental.forms import BookingForm
+from car_rental.utils import calculate_total_price
 from datetime import timedelta
 
 
