@@ -32,7 +32,7 @@ class Car(models.Model):
 class Booking(models.Model):
     INSURANCE_CHOICES = [
         ('young', 'Young (+50€)'),
-        ('standart', 'Standart (+40€)'),
+        ('standard', 'Standard (+40€)'),
         ('senior', 'Senior (+60€)'),
     ]
 
@@ -48,5 +48,6 @@ class Booking(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
-        return f"Booking for {self.car} by {self.name} {self.surname} ({self.user}) \
-                from {self.start_date} to {self.end_date}. Total price: {self.total_price}€"
+        return (f"Booking for {self.car} by {self.name} {self.surname} "
+                f"({self.user}) from {self.start_date} to {self.end_date}. "
+                f"Total price: {self.total_price}€")
