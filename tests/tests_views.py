@@ -51,3 +51,38 @@ class CarListViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('is_paginated' in response.context)
         self.assertEqual(len(response.context['cars']), 4)
+
+
+class CarDetailsViewTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        car_image_url = 'https://res.cloudinary.com/dd2fwm3fh/image/upload/v1699883191/xgwfa17rshjqvkaxk2hb.webp'
+
+        cls.car = Car.objects.create(make='Audi',
+                                     model='A4',
+                                     year=2020,
+                                     seats=4,
+                                     transmission_type='manual',
+                                     fuel_type='petrol',
+                                     price_per_day=Decimal('200.00'),
+                                     car_image=car_image_url
+                                     )
+
+    def test_view_url_exists_at_desired_location(self):
+        response = self.client.get(f'/cars/{self.car.pk}/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('car-details', kwargs={'pk': self.car.pk}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('car-details', kwargs={'pk': self.car.pk}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'car_details.html')
+
+    def test_context_data(self):
+        response = self.client.get(reverse('car-details', kwargs={'pk': self.car.pk}))
+        self.assertTrue('form' in response.context)
+        self.assertTrue('booked_dates' in response.context)
+        self.assertEqual(response.context['car'], self.car)
