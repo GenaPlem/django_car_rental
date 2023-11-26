@@ -9,3 +9,5 @@ __pycache__/
 node_modules/
 .github/
 cloudinary_python.txt
+.coverage
+db.sqlite3
