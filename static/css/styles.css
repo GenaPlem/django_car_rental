@@ -476,6 +476,12 @@ li.nav-item:last-of-type {
     transition: scale 0.2s;
 }
 
+.booking-status {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+}
+
 /* Alerts */
 .my-alert {
     position: fixed;
@@ -695,5 +701,9 @@ footer {
     .booking-actions img {
         width: 1.7rem;
         height: 1.7rem;
+    }
+
+    .booking-status {
+        scale: 1.2;
     }
 }
