@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from datetime import date
 
 
 class Car(models.Model):
@@ -43,9 +44,12 @@ class Booking(models.Model):
     name = models.CharField(max_length=20, blank=False, null=False)
     surname = models.CharField(max_length=20, blank=False, null=False)
     child_seat = models.BooleanField(default=False)
-    insurance_type = models.CharField(max_length=10, choices=INSURANCE_CHOICES, default='standart')
+    insurance_type = models.CharField(max_length=10, choices=INSURANCE_CHOICES, default='standard')
     rules_agreement = models.BooleanField(default=False, blank=False)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+
+    def is_completed(self):
+        return date.today() > self.end_date
 
     def __str__(self):
         return (f"Booking for {self.car} by {self.name} {self.surname} "
