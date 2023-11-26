@@ -93,8 +93,8 @@ class CarDetailsViewTest(TestCase):
 class ProfileViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        test_user = User.objects.create_user(username='testuser', password='aSdw12465')
-        test_user.save()
+        test_user_profile = User.objects.create_user(username='testuser', password='aSdw12465')
+        test_user_profile.save()
 
         car_image_url = 'https://res.cloudinary.com/dd2fwm3fh/image/upload/v1699883191/xgwfa17rshjqvkaxk2hb.webp'
         test_car = Car.objects.create(make='Audi',
@@ -107,7 +107,7 @@ class ProfileViewTest(TestCase):
                                       car_image=car_image_url
                                       )
         Booking.objects.create(
-            user=test_user,
+            user=test_user_profile,
             car=test_car,
             start_date=date(2024, 1, 1),
             end_date=date(2024, 1, 2),
@@ -152,6 +152,62 @@ class ProfileViewTest(TestCase):
         self.assertTrue('bookings' in response.context)
         for booking in response.context['bookings']:
             self.assertEqual(response.context['user'], booking.user)
+
+
+class BookingEditViewTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        test_user = User.objects.create_user(username='testuser', password='wdaSdw12465')
+        test_user.save()
+        car_image_url = 'https://res.cloudinary.com/dd2fwm3fh/image/upload/v1699883191/xgwfa17rshjqvkaxk2hb.webp'
+        test_car = Car.objects.create(make='Audi',
+                                      model='A4',
+                                      year=2020,
+                                      seats=4,
+                                      transmission_type='manual',
+                                      fuel_type='petrol',
+                                      price_per_day=Decimal('200.00'),
+                                      car_image=car_image_url
+                                      )
+
+        Booking.objects.create(
+            user=test_user,
+            car=test_car,
+            start_date=date(2024, 1, 1),
+            end_date=date(2024, 1, 2),
+            name='TestName',
+            surname='TestSurname',
+            child_seat=False,
+            insurance_type='standard',
+            rules_agreement=True,
+            total_price=Decimal('440.00')
+        )
+
+    def setUp(self):
+        self.client.login(username='testuser', password='wdaSdw12465')
+
+    def test_view_url_exists_at_desired_location(self):
+        booking = Booking.objects.get(name='TestName')
+        response = self.client.get(f'/booking/{booking.pk}/edit/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        booking = Booking.objects.get(name='TestName')
+        response = self.client.get(reverse('booking_edit', kwargs={'pk': booking.pk}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        booking = Booking.objects.get(name='TestName')
+        response = self.client.get(reverse('booking_edit', kwargs={'pk': booking.pk}))
+        self.assertTemplateUsed(response, 'booking_edit.html')
+
+    def test_form_data_in_context(self):
+        booking = Booking.objects.get(name='TestName')
+        response = self.client.get(reverse('booking_edit', kwargs={'pk': booking.pk}))
+        self.assertTrue('form' in response.context)
+        self.assertTrue('booked_dates' in response.context)
+        self.assertTrue('car' in response.context)
+        self.assertEqual(response.context['car'], booking.car)
 
 
 class PrivacyPolicyViewTest(TestCase):
