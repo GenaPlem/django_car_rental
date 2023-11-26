@@ -26,12 +26,17 @@
                         <p class="p-0 m-0">From {{ booking.start_date }}<br> to {{ booking.end_date }}</p>
                         <span class="booking-price text-black">{{ booking.total_price }}€</span>
                     </div>
-                    <div class="booking-actions d-flex gap-2 gap-sm-3">
-                        <a href="{% url 'booking_edit' pk=booking.pk %}"><img
-                            src="{% static 'icons/btn-edit.svg' %}" alt="Edit booking"></a>
-                        <a href="{% url 'booking_delete' pk=booking.pk %}"><img
-                            src="{% static 'icons/btn-delete.svg' %}" alt="Cancel booking"></a>
-                    </div>
+                    {% if booking.is_completed %}
+                        <img src="{% static 'icons/done.svg' %}" class="px-2 booking-status" alt='Booking done' width="40"
+                             height="40">
+                    {% else %}
+                        <div class="booking-actions d-flex gap-2 gap-sm-3">
+                            <a href="{% url 'booking_edit' pk=booking.pk %}"><img
+                                src="{% static 'icons/btn-edit.svg' %}" alt="Edit booking"></a>
+                            <a href="{% url 'booking_delete' pk=booking.pk %}"><img
+                                src="{% static 'icons/btn-delete.svg' %}" alt="Cancel booking"></a>
+                        </div>
+                    {% endif %}
                 </div>
                 {% empty %}
                 <p>No bookings made yet.</p>
