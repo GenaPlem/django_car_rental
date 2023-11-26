@@ -152,3 +152,13 @@ class ProfileViewTest(TestCase):
         self.assertTrue('bookings' in response.context)
         for booking in response.context['bookings']:
             self.assertEqual(response.context['user'], booking.user)
+
+
+class PrivacyPolicyViewTest(TestCase):
+    def test_privacy_policy_view_status_code(self):
+        response = self.client.get(reverse('privacy-policy'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_privacy_policy_view_uses_correct_template(self):
+        response = self.client.get(reverse('privacy-policy'))
+        self.assertTemplateUsed(response, 'privacy_policy.html')
