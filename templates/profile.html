@@ -17,7 +17,7 @@
                 <div class="booking-card d-flex gap-2 gap-sm-4 p-2 p-sm-3 mb-4 position-relative mx-auto">
                     <div class="car-img d-block overflow-hidden col-5 col-sm-3">
                         <img src="{{ booking.car.car_image.url }}" alt="{{ car.make }} {{ car.model }}"
-                             class="d-block w-100 h-auto">
+                             class="d-block w-100 h-auto" loading="lazy">
                     </div>
                     <div class="booking-info">
                         <p class="p-0 m-0 mb-md-2"><b>{{ booking.car.make }} {{ booking.car.model }}</b></p>
@@ -27,7 +27,8 @@
                         <span class="booking-price text-black">{{ booking.total_price }}€</span>
                     </div>
                     {% if booking.is_completed %}
-                        <img src="{% static 'icons/done.svg' %}" class="px-2 booking-status" alt='Booking done' width="40"
+                        <img src="{% static 'icons/done.svg' %}" class="px-2 booking-status" alt='Booking done'
+                             width="40"
                              height="40">
                     {% else %}
                         <div class="booking-actions d-flex gap-2 gap-sm-3">

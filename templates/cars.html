@@ -9,7 +9,7 @@
                 <div class="car-card-box d-flex flex-column col-6 col-sm-4 mb-4">
                     <div class="car-img d-block overflow-hidden mb-1">
                         <img src="{{ car.car_image.url }}" alt="{{ car.make }} {{ car.model }}"
-                             class="d-block w-100 h-auto">
+                             class="d-block w-100 h-auto" loading="lazy">
                     </div>
                     <h4 class="car-title">{{ car.make }} {{ car.model }}</h4>
                     <a href="{% url 'car-details' pk=car.pk %}" class="align-self-end">
