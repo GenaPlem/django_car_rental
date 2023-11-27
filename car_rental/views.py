@@ -1,7 +1,7 @@
 from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, resolve_url
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from car_rental.models import Car, Booking
@@ -138,6 +138,8 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
         return context
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('profile')
         booking = self.get_object()
         if booking.is_completed():
             messages.error(request, 'This booking has already expired and cannot be edited.')
@@ -176,6 +178,8 @@ class BookingDeleteView(DeleteView):
         return reverse_lazy('profile')
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('profile')
         booking = self.get_object()
         if booking.is_completed():
             messages.error(request, 'This booking has already expired and cannot be deleted.')
