@@ -16,7 +16,7 @@
             {% for booking in bookings %}
                 <div class="booking-card d-flex gap-2 gap-sm-4 p-2 p-sm-3 mb-4 position-relative mx-auto">
                     <div class="car-img d-block overflow-hidden col-5 col-sm-3">
-                        <img src="{{ booking.car.car_image.url }}" alt="{{ car.make }} {{ car.model }}"
+                        <img src="{{ booking.car.car_image.url }}" alt="{{ booking.car.make }} {{ booking.car.model }}"
                              class="d-block w-100 h-auto" loading="lazy">
                     </div>
                     <div class="booking-info">
