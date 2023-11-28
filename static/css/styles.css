@@ -122,6 +122,7 @@ li.nav-item:last-of-type {
     width: 7.5rem;
     height: 2.5rem;
     background-color: transparent;
+    text-decoration: none;
 }
 
 #learn_more {
@@ -189,7 +190,6 @@ li.nav-item:last-of-type {
 
 #rent_now {
     width: 11rem;
-    height: 2.5rem;
     font-size: 1rem;
     margin: 0 auto;
     position: absolute;
@@ -627,7 +627,6 @@ footer {
         position: unset;
         margin: 5rem 0 0 9.5rem;
         width: 16.2rem;
-        height: 3.7rem;
         font-size: 2rem;
     }
 

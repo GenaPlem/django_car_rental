@@ -138,7 +138,7 @@
         {% endif %}
     </section>
     {% block scripts %}
-        <script type="text/javascript">
+        <script>
             if (typeof window.bookedDates === 'undefined') {
                 window.bookedDates = {{ booked_dates|safe }};
             }

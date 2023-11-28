@@ -53,15 +53,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'account_logout' %}" class="ms-sm-4">
-                                <button class="fs-4 text-white btn-orange" id="sign_in">Log out</button>
-                            </a>
+                            <a class="fs-4 text-white btn-orange ms-sm-4 px-3" href="{% url 'account_logout' %}"
+                               id="sign_in">Log out</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a href="{% url 'account_login' %}" class="ms-sm-4">
-                                <button class="fs-4 text-white btn-orange" id="sign_in">Sign in</button>
-                            </a>
+                            <a href="{% url 'account_login' %}" class="fs-4 px-3 text-white btn-orange ms-sm-4"
+                               id="sign_in">Sign in</a>
                         </li>
                     {% endif %}
                 </ul>

@@ -12,10 +12,9 @@
                              class="d-block w-100 h-auto" loading="lazy">
                     </div>
                     <h4 class="car-title">{{ car.make }} {{ car.model }}</h4>
-                    <a href="{% url 'car-details' pk=car.pk %}" class="align-self-end">
-                        <button type="button" class="btn-orange text-white price">{{ car.price_per_day }}€ / Day
-                        </button>
-                    </a>
+                    <a href="{% url 'car-details' pk=car.pk %}"
+                       class="align-self-end btn-orange text-white price text-decoration-none px-2">{{ car.price_per_day }}€
+                        / Day</a>
                 </div>
             {% endfor %}
         </div>

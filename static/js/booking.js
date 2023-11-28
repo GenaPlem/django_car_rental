@@ -30,7 +30,7 @@ const updateTotalPrice = () => {
 
         totalPriceElement.textContent = total + '€';
     }
-}
+};
 
 /* JS Vanilla Datepicker */
 const startDatepicker = new Datepicker(startDateInput, {
@@ -38,13 +38,13 @@ const startDatepicker = new Datepicker(startDateInput, {
     autohide: true,
     datesDisabled: bookedDates,
     format: 'yyyy-mm-dd'
-})
+});
 const endDatepicker = new Datepicker(endDateInput, {
     minDate: new Date(),
     autohide: true,
     datesDisabled: bookedDates,
     format: 'yyyy-mm-dd'
-})
+});
 
 /**
  * Function to update min value of End Date after Start Date changes
@@ -56,7 +56,7 @@ const updateEndDateMin = (e) => {
     if (endDateInput.value && new Date(endDateInput.value) < selectedDate) {
         endDatepicker.setDate(selectedDate);
     }
-}
+};
 
 /**
  * Function to update max booking date for 1 month
@@ -74,9 +74,9 @@ const updateEndDateMax = (e) => {
     }
 
     if (endDateInput.value && new Date(endDateInput.value) > maxBookingDate) {
-        endDatepicker.setDate(maxBookingDate)
+        endDatepicker.setDate(maxBookingDate);
     }
-}
+};
 /* If startDateInput already has a value than max date will be after one month */
 if (startDateInput.value) {
     const selectedDate = new Date(startDateInput.value);
@@ -99,4 +99,4 @@ if (childSeatCheckbox) {
 }
 
 
-updateTotalPrice()
+updateTotalPrice();
