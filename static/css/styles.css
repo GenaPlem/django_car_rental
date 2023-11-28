@@ -399,6 +399,11 @@ li.nav-item:last-of-type {
     color: #ffffff;
 }
 
+.booking-form-field select option {
+    color: #ffffff;
+    background-color: #26222A;
+}
+
 .booking-form-field label[for='id_start_date'],
 .booking-form-field label[for='id_end_date'] {
     position: relative;
