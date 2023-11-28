@@ -33,9 +33,9 @@
                     {% else %}
                         <div class="booking-actions d-flex gap-2 gap-sm-3">
                             <a href="{% url 'booking_edit' pk=booking.pk %}"><img
-                                src="{% static 'icons/btn-edit.svg' %}" alt="Edit booking"></a>
+                                src="{% static 'icons/btn_edit.svg' %}" alt="Edit booking"></a>
                             <a href="{% url 'booking_delete' pk=booking.pk %}"><img
-                                src="{% static 'icons/btn-delete.svg' %}" alt="Cancel booking"></a>
+                                src="{% static 'icons/btn_delete.svg' %}" alt="Cancel booking"></a>
                         </div>
                     {% endif %}
                 </div>
