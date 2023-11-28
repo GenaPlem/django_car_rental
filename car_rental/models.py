@@ -5,6 +5,9 @@ from datetime import date
 
 
 class Car(models.Model):
+    """
+    Car model to be able to create many Cars in Django's admin panel
+    """
     TRANSMISSION_CHOICES = [("manual", "Manual"), ("automatic", "Automatic")]
 
     FUEL_CHOICES = [
@@ -32,6 +35,9 @@ class Car(models.Model):
 
 
 class Booking(models.Model):
+    """
+    Model for car reservation with multiple additional parameters
+    """
     INSURANCE_CHOICES = [
         ("young", "Young (+50€)"),
         ("standard", "Standard (+40€)"),
@@ -54,6 +60,9 @@ class Booking(models.Model):
     )
 
     def is_completed(self):
+        """
+        Function to check if booking is completed already
+        """
         return date.today() > self.end_date
 
     def __str__(self):

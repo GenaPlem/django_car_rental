@@ -17,24 +17,35 @@ from datetime import timedelta
 
 
 class HomeView(TemplateView):
+    """
+    View for home page
+    """
     template_name = "index.html"
 
 
 class CarsListView(ListView):
+    """
+    View for Our Cars page
+    """
     model = Car
     template_name = "cars.html"
     context_object_name = "cars"
     paginate_by = 6
 
+    # cars filter by available prop
     def get_queryset(self):
         return Car.objects.filter(available=True)
 
 
 class CarDetailsView(DetailView, FormMixin):
+    """
+    View for Car reservation page with form to book it thats why I mixed DetailView and FormMixin
+    """
     model = Car
     template_name = "car_details.html"
     form_class = BookingForm
 
+    # if form fill out correctly
     def get_success_url(self):
         return reverse_lazy("profile")
 
@@ -51,6 +62,7 @@ class CarDetailsView(DetailView, FormMixin):
         if "form" not in context:
             context["form"] = BookingForm(car=car)
 
+        # already booked dates
         bookings = Booking.objects.filter(car=car)
         booked_dates = []
 
@@ -77,6 +89,7 @@ class CarDetailsView(DetailView, FormMixin):
         booking.user = self.request.user
         booking.car = self.get_object()
 
+        # To get total price into db
         booking.total_price = calculate_total_price(
             booking.start_date,
             booking.end_date,
@@ -89,6 +102,7 @@ class CarDetailsView(DetailView, FormMixin):
         messages.success(self.request, "Booking was successfully created!")
         return super(CarDetailsView, self).form_valid(form)
 
+    # Incorrect form fill out
     def form_invalid(self, form):
         self.object = self.get_object()
         messages.error(self.request, "Something wrong with your booking!")
@@ -96,6 +110,9 @@ class CarDetailsView(DetailView, FormMixin):
 
 
 class ProfileView(LoginRequiredMixin, ListView):
+    """
+    View for User Profile with list of all his bookings
+    """
     model = Booking
     template_name = "profile.html"
     context_object_name = "bookings"
@@ -112,6 +129,9 @@ class ProfileView(LoginRequiredMixin, ListView):
 
 
 class BookingEditView(LoginRequiredMixin, UpdateView):
+    """
+    View to edit booking
+    """
     model = Booking
     form_class = BookingForm
     template_name = "booking_edit.html"
@@ -148,6 +168,13 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
         return context
 
     def dispatch(self, request, *args, **kwargs):
+        """
+        It checks if the user is authenticated,
+        ensuring that only logged-in users can access the edit booking page.
+        Additionally, it checks whether the booking has already been completed;
+        if so, it redirects the user to the profile page with an error message,
+        preventing any edits to past bookings.
+        """
         if not request.user.is_authenticated:
             return redirect("profile")
         booking = self.get_object()
@@ -191,6 +218,13 @@ class BookingDeleteView(DeleteView):
         return reverse_lazy("profile")
 
     def dispatch(self, request, *args, **kwargs):
+        """
+        It checks if the user is authenticated,
+        ensuring that only logged-in users can access the edit booking page.
+        Additionally, it checks whether the booking has already been completed;
+        if so, it redirects the user to the profile page with an error message,
+        preventing any edits to past bookings.
+        """
         if not request.user.is_authenticated:
             return redirect("profile")
         booking = self.get_object()

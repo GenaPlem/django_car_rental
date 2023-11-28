@@ -1,7 +1,9 @@
-# Function to calculate total price of booking
 def calculate_total_price(
         start_date, end_date, car_price_per_day, child_seat, insurance_type
 ):
+    """
+    Function to calculate total price of booking
+    """
     rental_days = (end_date - start_date).days + 1
     insurance_cost = 0
     child_seat_cost = 0

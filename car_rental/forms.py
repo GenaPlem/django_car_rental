@@ -5,6 +5,10 @@ import re
 
 
 class BookingForm(forms.ModelForm):
+    """
+    Form to rent a Car
+    """
+
     def __init__(self, *args, **kwargs):
         self.car = kwargs.pop("car", None)
         super(BookingForm, self).__init__(*args, **kwargs)
@@ -25,6 +29,7 @@ class BookingForm(forms.ModelForm):
             "end_date": forms.TextInput(attrs={"autocomplete": "off"}),
         }
 
+    # name validation
     def clean_name(self):
         name = self.cleaned_data.get("name")
         if not re.match(r"^[a-zA-Zа-яА-Я\s]+$", name):
@@ -33,6 +38,7 @@ class BookingForm(forms.ModelForm):
             raise forms.ValidationError("Name should be more than 2 symbols.")
         return name
 
+    # surname validation
     def clean_surname(self):
         surname = self.cleaned_data.get("surname")
         if not re.match(r"^[a-zA-Zа-яА-Я\s]+$", surname):
@@ -45,6 +51,7 @@ class BookingForm(forms.ModelForm):
             )
         return surname
 
+    # dates validation
     def clean(self):
         cleaned_data = super().clean()
         start_date = cleaned_data.get("start_date")
@@ -87,6 +94,7 @@ class BookingForm(forms.ModelForm):
 
         return cleaned_data
 
+    # rules agreement validation
     def clean_rules_agreement(self):
         rules_agreement = self.cleaned_data.get("rules_agreement")
         if not rules_agreement:
