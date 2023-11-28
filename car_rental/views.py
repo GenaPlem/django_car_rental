@@ -1,7 +1,13 @@
-from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView,
+    TemplateView,
+    DetailView,
+    UpdateView,
+    DeleteView,
+)
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, resolve_url
+from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from car_rental.models import Car, Booking
@@ -11,13 +17,13 @@ from datetime import timedelta
 
 
 class HomeView(TemplateView):
-    template_name = 'index.html'
+    template_name = "index.html"
 
 
 class CarsListView(ListView):
     model = Car
-    template_name = 'cars.html'
-    context_object_name = 'cars'
+    template_name = "cars.html"
+    context_object_name = "cars"
     paginate_by = 6
 
     def get_queryset(self):
@@ -26,24 +32,24 @@ class CarsListView(ListView):
 
 class CarDetailsView(DetailView, FormMixin):
     model = Car
-    template_name = 'car_details.html'
+    template_name = "car_details.html"
     form_class = BookingForm
 
     def get_success_url(self):
-        return reverse_lazy('profile')
+        return reverse_lazy("profile")
 
     def get_form_kwargs(self):
         """Return the keyword arguments for instantiating the form."""
         kwargs = super().get_form_kwargs()
-        kwargs['car'] = self.get_object()
+        kwargs["car"] = self.get_object()
         return kwargs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         car = self.get_object()
 
-        if 'form' not in context:
-            context['form'] = BookingForm(car=car)
+        if "form" not in context:
+            context["form"] = BookingForm(car=car)
 
         bookings = Booking.objects.filter(car=car)
         booked_dates = []
@@ -54,7 +60,7 @@ class CarDetailsView(DetailView, FormMixin):
                 booked_dates.append(current_date.strftime("%Y-%m-%d"))
                 current_date += timedelta(days=1)
 
-        context['booked_dates'] = booked_dates
+        context["booked_dates"] = booked_dates
 
         return context
 
@@ -76,40 +82,42 @@ class CarDetailsView(DetailView, FormMixin):
             booking.end_date,
             booking.car.price_per_day,
             booking.child_seat,
-            booking.insurance_type
+            booking.insurance_type,
         )
 
         booking.save()
-        messages.success(self.request, 'Booking was successfully created!')
+        messages.success(self.request, "Booking was successfully created!")
         return super(CarDetailsView, self).form_valid(form)
 
     def form_invalid(self, form):
         self.object = self.get_object()
-        messages.error(self.request, 'Something wrong with your booking!')
+        messages.error(self.request, "Something wrong with your booking!")
         return self.render_to_response(self.get_context_data(form=form))
 
 
 class ProfileView(LoginRequiredMixin, ListView):
     model = Booking
-    template_name = 'profile.html'
-    context_object_name = 'bookings'
+    template_name = "profile.html"
+    context_object_name = "bookings"
 
     def get_queryset(self):
-        return Booking.objects.filter(user=self.request.user).order_by('start_date')
+        return Booking.objects.filter(user=self.request.user).order_by(
+            "start_date"
+        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user'] = self.request.user
+        context["user"] = self.request.user
         return context
 
 
 class BookingEditView(LoginRequiredMixin, UpdateView):
     model = Booking
     form_class = BookingForm
-    template_name = 'booking_edit.html'
+    template_name = "booking_edit.html"
 
     def get_success_url(self):
-        return reverse_lazy('profile')
+        return reverse_lazy("profile")
 
     def get_queryset(self):
         return Booking.objects.filter(user=self.request.user)
@@ -117,7 +125,7 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
     def get_form_kwargs(self):
         kwargs = super(BookingEditView, self).get_form_kwargs()
         booking = self.get_object()
-        kwargs['car'] = booking.car
+        kwargs["car"] = booking.car
         return kwargs
 
     def get_context_data(self, **kwargs):
@@ -125,7 +133,9 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
         booking = self.get_object()
         car = booking.car
 
-        other_bookings = Booking.objects.filter(car=car).exclude(id=booking.id)
+        other_bookings = Booking.objects.filter(car=car).exclude(
+            id=booking.id
+        )
         booked_dates = []
         for other_booking in other_bookings:
             current_date = other_booking.start_date
@@ -133,17 +143,20 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
                 booked_dates.append(current_date.strftime("%Y-%m-%d"))
                 current_date += timedelta(days=1)
 
-        context['booked_dates'] = booked_dates
-        context['car'] = car
+        context["booked_dates"] = booked_dates
+        context["car"] = car
         return context
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('profile')
+            return redirect("profile")
         booking = self.get_object()
         if booking.is_completed():
-            messages.error(request, 'This booking has already expired and cannot be edited.')
-            return redirect('profile')
+            messages.error(
+                request,
+                "This booking has already expired and cannot be edited.",
+            )
+            return redirect("profile")
         return super(BookingEditView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -155,37 +168,42 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
             booking.end_date,
             booking.car.price_per_day,
             booking.child_seat,
-            booking.insurance_type
+            booking.insurance_type,
         )
 
         booking.save()
-        messages.success(self.request, 'Booking was successfully edited!')
+        messages.success(self.request, "Booking was successfully edited!")
         return response
 
     def form_invalid(self, form):
         self.object = self.get_object()
-        messages.error(self.request, 'Something wrong with your booking!')
+        messages.error(self.request, "Something wrong with your booking!")
         return self.render_to_response(self.get_context_data(form=form))
 
 
 class BookingDeleteView(DeleteView):
     model = Booking
-    success_url = reverse_lazy('booking_list')
-    template_name = 'booking_confirm_delete.html'
+    success_url = reverse_lazy("booking_list")
+    template_name = "booking_confirm_delete.html"
 
     def get_success_url(self):
-        messages.success(self.request, 'Booking was successfully canceled!')
-        return reverse_lazy('profile')
+        messages.success(self.request, "Booking was successfully canceled!")
+        return reverse_lazy("profile")
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('profile')
+            return redirect("profile")
         booking = self.get_object()
         if booking.is_completed():
-            messages.error(request, 'This booking has already expired and cannot be deleted.')
-            return redirect('profile')
-        return super(BookingDeleteView, self).dispatch(request, *args, **kwargs)
+            messages.error(
+                request,
+                "This booking has already expired and cannot be deleted.",
+            )
+            return redirect("profile")
+        return super(BookingDeleteView, self).dispatch(
+            request, *args, **kwargs
+        )
 
 
 class PrivacyPolicyView(TemplateView):
-    template_name = 'privacy_policy.html'
+    template_name = "privacy_policy.html"
