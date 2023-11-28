@@ -28,16 +28,14 @@
                     {% if field.name == 'start_date' %}
                         <div class="booking-form-field">
                             <label for="{{ field.id_for_label }}">From:
-                                <input type="text" name="start_date" id="id_start_date"
-                                       value="{{ field.value|date:'Y-m-d' }}">
+                                {{ field }}
                             </label>
                             {{ field.errors }}
                         </div>
                     {% elif field.name == 'end_date' %}
                         <div class="booking-form-field">
                             <label for="{{ field.id_for_label }}">To (max 1 month):
-                                <input type="text" name="end_date" id="id_end_date"
-                                       value="{{ field.value|date:'Y-m-d' }}">
+                                {{ field }}
                             </label>
                             {{ field.errors }}
                         </div>
