@@ -95,11 +95,11 @@ main {
 }
 
 .nav-link {
-    transition: scale 0.2s;
+    transition: transform 0.2s;
 }
 
 .nav-link:hover {
-    scale: 1.05;
+    transform: scale(1.05);
 }
 
 li.nav-item:last-of-type {
@@ -132,14 +132,14 @@ li.nav-item:last-of-type {
 
 /* Add two id's for profile icon link to be circle */
 #profile-link {
-    scale: 0.8;
+    transform: scale(0.8);
     display: block;
     width: 2.8rem;
     height: 2.8rem;
     border-radius: 50%;
     overflow: hidden;
     line-height: 0;
-    transition: scale 0.2s;
+    transition: transform 0.2s;
 }
 
 #profile-icon {
@@ -150,7 +150,7 @@ li.nav-item:last-of-type {
 }
 
 #profile-link:hover {
-    scale: 0.85;
+    transform: scale(0.85);
 }
 
 .price {
@@ -309,11 +309,11 @@ li.nav-item:last-of-type {
     font-size: 1.3rem;
     width: 7.75rem;
     margin-left: auto;
-    transition: scale 0.2s;
+    transition: transform 0.2s;
 }
 
 #auth_btn:hover {
-    scale: 1.05;
+    transform: scale(1.05);
 }
 
 .form-field label {
@@ -478,8 +478,8 @@ li.nav-item:last-of-type {
 }
 
 .booking-actions a:hover {
-    scale: 1.1;
-    transition: scale 0.2s;
+    transform: scale(1.1);
+    transition: transform 0.2s;
 }
 
 .booking-status {
@@ -709,6 +709,6 @@ footer {
     }
 
     .booking-status {
-        scale: 1.2;
+        transform: scale(1.2);
     }
 }
