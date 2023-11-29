@@ -87,7 +87,7 @@ Agile Methodology was used to help prioritize and organize tasks, writing the us
 <summary> Project Board
 </summary>
 
-![Project Board](documentation/images/design/project_board.png)
+![Project Board](documentation/images/design/project_oard.png)
 </details>
 
 ### User Stories
