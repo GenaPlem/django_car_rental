@@ -13,7 +13,7 @@ class Car(models.Model):
     FUEL_CHOICES = [
         ("petrol", "Petrol"),
         ("diesel", "Diesel"),
-        ("electic", "Electric"),
+        ("electric", "Electric"),
     ]
 
     make = models.CharField(max_length=50)
