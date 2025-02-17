@@ -34,7 +34,7 @@ class CarsListView(ListView):
 
     # cars filter by available prop
     def get_queryset(self):
-        return Car.objects.filter(available=True)
+        return Car.objects.filter(available=True).order_by('-price_per_day')
 
 
 class CarDetailsView(DetailView, FormMixin):
